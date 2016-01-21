@@ -2,11 +2,13 @@
 <html>
     <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+      <!-- vehicle api 必須 : ここから-->      
       <script src="http://52.193.125.145:3000/socket.io/socket.io.js"></script>
-      
       <script src="http://52.193.125.145:3000/www/js/vehicleAPI.js"></script>
       <script src="http://52.193.125.145:3000/www/js/vehicleAPI-client.js"></script>      
-
+      <!-- vehicle api 必須 : ここまで -->
+      
       <!-- Map -->
       <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
       <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
@@ -17,6 +19,8 @@
             height:430px;
         }
       </style>
+      
+      <!-- vehicle api 必須 : ここから-->            
       <script>
         var roomID = "YOUR.NAME.HERE@example.com";
         
@@ -25,7 +29,10 @@
           var msg = {"roomID":roomID, "data":"NOT REQUIRED"};
           socket.emit('joinRoom', JSON.stringify(msg));        
         }
-
+      </script>
+      <!-- vehicle api 必須 : ここまで -->
+        
+      <script>              
         var gVehicleSpeed = 0;
         var gEngineSpeed = 0;
         var vehicleSpeedSub = navigator.vehicle.vehicleSpeed.subscribe(function(vehicleSpeed) {
