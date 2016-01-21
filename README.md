@@ -23,14 +23,24 @@
 ** 構成図(node.js, websocket, polyfill, controllUI, hackathonアプリの関係を図示)
 ** 使用手順はSampleで説明
 
-* 走行データ閲覧ツール
+### 走行データ閲覧ツール
 ** 地図、グラフから、使いたいイベントが含まれるデータを探せる
+1. [MapTool](http://52.193.125.145:3000/MapTool/osm_mapping.html) を開く
+2. ドロップダウンから適当なデータを選択する
 
-## Sample
+### Control-UI
+1. [Control-UI](http://52.193.125.145:3000/cluster/controlindex.html?json=20151221-asakusa-skytree.json) を開く
+2. `RoomID` のところにユニークな文字列を入れ、`Connect`をクリック
+3. ドロップダウンから適当なデータを選択し、YouTubeコンテンツ内の再生ボタンをクリック
+4. データが配信されるので、メーターやハンドルなどが動くのを確認する
 
-* パス
+## ApplicationSample
+* [vehicleSpeed](http://52.193.125.145:3000/www/ApplicationSample/vehicleSpeed.html) ([ソースコード](https://github.com/access-company/AutoWeb-Hackathon/blob/master/ApplicationSample/vehicleSpeed.html))
+* [location](http://52.193.125.145:3000/www/ApplicationSample/location.html) ([ソースコード](https://github.com/access-company/AutoWeb-Hackathon/blob/master/ApplicationSample/location.html))
 
-* 使用手順
+## ApplicationSample 使用手順
+* 書く？
+
 ** ControlUI + サンプルを動かしてもらうことで、開発環境の使い方を理解してもらう 
 
 ## 走行データ
