@@ -5,10 +5,10 @@
 ### W3C Vehicle API について
 
 * W3C Automotive And Web Platform Business Group [link](https://www.w3.org/community/autowebplatform/)
-* 2013年1月活動開始。Vehicle APIについては2014年12月にFinal Business Group Reportとしてドラフトを公開。
+    * 2013年1月活動開始。Vehicle APIについては2014年12月にFinal Business Group Reportとしてドラフトを公開。
 
 * W3C Automotive Working Group [link](https://www.w3.org/auto/wg/)
-* Vehicle APIの仕様策定をBusiness Groupから引き継ぎ、作業継続中。
+    * Vehicle APIの仕様策定をBusiness Groupから引き継ぎ、作業継続中。
 
 * W3C Vehicle API Spec(Final Business Group Report)
     * Vehicle Information API [link](https://www.w3.org/2014/automotive/vehicle_spec.html)
@@ -17,10 +17,15 @@
 ### Vehicle API システム概要
 
 * Toyota Prius 3rd generation
+
 <img src="./doc/images/prius_side.jpg" width="600px">
+
 * Vehicle API システム構成図
+
 <img src="./doc/images/vehicle_data_system.png" width="600px">
+
 * Vehicle API Polyfillについて
+
 <img src="./doc/images/polyfill_image.png" width="600px">
 
 ### 利用可能データ項目リスト
@@ -117,15 +122,15 @@ ApplicationSampleはクライアントアプリケーションのひな形
 (Engien Crankingはイグニッションキーを回してセルモーターがエンジンを起動している状態です)
 
 * 車両の座標系について
-<img src="wiki/images/axis_image.png" width="600px">
+<img src=./doc/images/axis_image.png" width="600px">
 
 * 以下については走行データが途中で終了または一部欠けていますのでご注意ください。
-* 01. 浅草寺雷門→言問橋
-* TODO: 追加
+    * 01. 浅草寺雷門→言問橋
+    * TODO: 追加
+
 * 以下については事情により走行中の動画の撮影ができなかったため、代替の動画が再生されます。
-* 28.高津→等々力アリーナ（成人式）→246号→飯田橋
-* TODO: 追加
+    * 28.高津→等々力アリーナ（成人式）→246号→飯田橋
+    * TODO: 追加
 
 * 3DカメラThetaの動画はControl-UI上のYoutubeウインドウでマウス操作により視点変更が可能です。ただし、確認した限りではUbuntu12.04上のGoogle ChromeではYoutubeの3D動画機能が正しく動作しませんでした。
-
 
