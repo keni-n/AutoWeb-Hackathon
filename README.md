@@ -109,9 +109,9 @@ ApplicationSampleはクライアントアプリケーションのひな形
 
 ご協賛をいただいた各社のWebAPIを以下にご紹介します。
 
-* インクリメントP [link](./doc/files/incrementp/upload_files.zip)
+* インクリメントP [link](https://github.com/access-company/AutoWeb-Hackathon/blob/master/doc/files/incrementp/upload_file.zip)
 
-* twillio [link](.doc/files/twillio/twillio_howto.txt)
+* twillio [link](https://github.com/access-company/AutoWeb-Hackathon/blob/master/doc/files/twillio/twillio_howto.txt)
 
 * xxxxx
 
