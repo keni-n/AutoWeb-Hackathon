@@ -122,6 +122,7 @@ ApplicationSampleはクライアントアプリケーションのひな形
 (Engien Crankingはイグニッションキーを回してセルモーターがエンジンを起動している状態です)
 
 * 車両の座標系について
+
 <img src="./doc/images/axis_image.png" width="600px">
 
 * 以下については走行データが途中で終了または一部欠けていますのでご注意ください。
