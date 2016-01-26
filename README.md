@@ -111,7 +111,7 @@ ApplicationSampleはクライアントアプリケーションのひな形
 
 * インクリメントP [link](https://github.com/access-company/AutoWeb-Hackathon/blob/master/doc/files/incrementp/upload_file.zip)
 
-* twillio [link](https://github.com/access-company/AutoWeb-Hackathon/blob/master/doc/files/twillio/twillio_howto.txt)
+* twilio [link](https://github.com/access-company/AutoWeb-Hackathon/blob/master/doc/files/twilio/twilio_howto.txt)
 
 * xxxxx
 
