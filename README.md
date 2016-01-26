@@ -105,6 +105,20 @@ ApplicationSampleはクライアントアプリケーションのひな形
 また各走行データの詳細についてはマップツールでご確認ください。
 * 走行パターンリスト [link](./doc/files/course_list.pdf)
 
+## マッシュアップAPI
+
+ご協賛をいただいた各社のWebAPIを以下にご紹介します。
+
+* インクリメントP [link](./doc/files/incrementp/upload_files.zip)
+
+* twillio [link](.doc/files/twillio/twillio_howto.txt)
+
+* xxxxx
+
+* xxxxx
+
+* xxxxx
+
 ## FAQ
 
 * 作業用ブラウザには Google Chrome をご使用ください。
