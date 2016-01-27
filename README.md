@@ -22,7 +22,8 @@
 
 * Vehicle API システム構成図
 
-    本技術は、総務省の『ICTを活用した次世代ITSの確立』（SIP自動走行システムの一部）による委託を受けて実施した研究開発の成果を活用しています。
+    <sub>本技術は、総務省の『ICTを活用した次世代ITSの確立』（SIP自動走行システムの一部）</sub><br>
+    <sub>による委託を受けて実施した研究開発の成果を活用しています。</sub>
 
 <img src="./doc/images/vehicle_data_system.png" width="600px">
 
