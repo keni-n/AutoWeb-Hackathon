@@ -90,6 +90,7 @@
 ### ApplicationSample
 
 ApplicationSampleはクライアントアプリケーションのひな形でControl-UIとの動作連携に必要なコードを含んでいます。
+クライアントアプリケーションの作り方はApplicationSampleをご参照ください。Control-UIとの連携動作に必要な最低限のコードで記述されています。
 
 * [vehicleSpeed](https://github.com/access-company/AutoWeb-Hackathon/blob/master/ApplicationSample/vehicleSpeed.html)
 * [location](https://github.com/access-company/AutoWeb-Hackathon/blob/master/ApplicationSample/location.html)
