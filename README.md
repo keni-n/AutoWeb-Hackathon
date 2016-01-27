@@ -22,6 +22,7 @@
 
 * Vehicle API システム構成図
 
+本技術は、総務省の『ICTを活用した次世代ITSの確立』（SIP自動走行システムの一部）による委託を受けて実施した研究開発の成果を活用しています。
 <img src="./doc/images/vehicle_data_system.png" width="600px">
 
 * Vehicle API Polyfillについて
@@ -61,10 +62,6 @@
 ||  speed|  |
 
 ## SDK
-- ハッカソン向けに準備した開発環境の説明【図を追加】
-- 机上でVehicleAPIをエミュレートする仕組み
-- ControlUIなどツールの操作手順
-- サンプルの紹介(こういうサンプルがあります)
 
 ### ハッカソン開発環境
 
@@ -90,12 +87,12 @@
 
 ### ApplicationSample
 
-ApplicationSampleはクライアントアプリケーションのひな形
+ApplicationSampleはクライアントアプリケーションのひな形でControl-UIとの動作連携に必要なコードを含んでいます。
 
-* [vehicleSpeed](http://52.193.125.145:3000/www/ApplicationSample/vehicleSpeed.html) ([ソースコード](https://github.com/access-company/AutoWeb-Hackathon/blob/master/ApplicationSample/vehicleSpeed.html))
-* [location](http://52.193.125.145:3000/www/ApplicationSample/location.html) ([ソースコード](https://github.com/access-company/AutoWeb-Hackathon/blob/master/ApplicationSample/location.html))
+* [vehicleSpeed](https://github.com/access-company/AutoWeb-Hackathon/blob/master/ApplicationSample/vehicleSpeed.html)
+* [location](https://github.com/access-company/AutoWeb-Hackathon/blob/master/ApplicationSample/location.html)
 
-1. ApplicationSampleのコードをgithubから取得し、参加者の管理するWebサーバーに配置する
+1. ApplicationSampleのコードをgithubから取得し、参加者の実行環境に配置する
 2. ApplicationSampleのコード中のRoomID値をControl-UIに設定するRoomIDと合わせておく
 3. ApplicationSampleをChromeブラウザで起動して、Control-UIからの走行データ配信を待つ
 
@@ -119,7 +116,7 @@ ApplicationSampleはクライアントアプリケーションのひな形
 
 * xxxxx
 
-## FAQ
+## 注意事項
 
 * 作業用ブラウザには Google Chrome をご使用ください。
 
@@ -133,7 +130,7 @@ ApplicationSampleはクライアントアプリケーションのひな形
 * Altitudeの値は誤差が大きいため参考値となります。
 
 * VehiclePowerModeTypeとは、車両のイグニッションの状態を表します。
-今回のPrius 3rdの場合は'Running'以外の取得はできません。
+今回の場合は'Running'以外の取得はできません。
 (Engien Crankingはイグニッションキーを回してセルモーターがエンジンを起動している状態です)
 
 * 車両の座標系について
@@ -141,12 +138,18 @@ ApplicationSampleはクライアントアプリケーションのひな形
 <img src="./doc/images/axis_image.png" width="600px">
 
 * 以下については走行データが途中で終了または一部欠けていますのでご注意ください。
-    * 01. 浅草寺雷門→言問橋
-    * TODO: 追加
+    * 01.浅草寺雷門→言問橋
+    * 11.塩浜→東京タワー(Theta)
 
 * 以下については事情により走行中の動画の撮影ができなかったため、代替の動画が再生されます。
     * 28.高津→等々力アリーナ（成人式）→246号→飯田橋
-    * TODO: 追加
+    * 65.三角池→木戸池
+    * 66.前山ゲレンデ→蓮池
 
 * 3DカメラThetaの動画はControl-UI上のYoutubeウインドウでマウス操作により視点変更が可能です。ただし、確認した限りではUbuntu12.04上のGoogle ChromeではYoutubeの3D動画機能が正しく動作しませんでした。
+
+## FAQ
+
+wikiの[FAQ](https://github.com/access-company/autoweb-hackathon/wiki)をご参照ください。
+(当日、会場での質問なども適宜アップしていきます)
 
