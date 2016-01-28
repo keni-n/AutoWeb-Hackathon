@@ -109,22 +109,22 @@
 ご協賛をいただいた各社のWebAPIを以下にご紹介します。
 
 * インクリメントP [link](https://github.com/access-company/AutoWeb-Hackathon/blob/master/doc/files/incrementp/upload_file.zip)
-  インターネット地図配信サービス「Map Fan API」
+    インターネット地図配信サービス「Map Fan API」
 
 * twilio [link](https://github.com/access-company/AutoWeb-Hackathon/blob/master/doc/files/twilio/twilio_howto.txt)
-  電話/SMSとつながるクラウドAPIサービス「twilio」
+    電話/SMSとつながるクラウドAPIサービス「twilio」
 
 * 昭文社
-  観光スポット情報配信サービス「MAPPLE観光情報API」
-  (詳細は当日配布資料にてご紹介させていただきます)
+    観光スポット情報配信サービス「MAPPLE観光情報API」
+    (詳細は当日配布資料にてご紹介させていただきます)
 
 * YuMake
-  天気予報、防災情報、潮汐情報など「YuMake気象情報API」
-  (詳細は当日配布資料にてご紹介させていただきます)
+    天気予報、防災情報、潮汐情報など「YuMake気象情報API」
+    (詳細は当日配布資料にてご紹介させていただきます)
 
 * 富士通テン
-  今回の走行データに同期した左右車線との距離、前方車両との距離情報のAPI
-  (詳細は当日配布資料にてご紹介させていただきます)
+    今回の走行データに同期した左右車線との距離、前方車両との距離情報のAPI
+    (詳細は当日配布資料にてご紹介させていただきます)
 
 ## 注意事項
 
