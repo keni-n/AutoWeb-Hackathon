@@ -67,7 +67,7 @@
 
 ### ハッカソン開発環境
 
-* TODO:構成図追加 (node.js, websocket, polyfill, controllUI, hackathonアプリの関係を図示)
+<img src="./doc/images/hackathon_sys.png" width="600px">
 
 ### マップツール（走行データ閲覧ツール）
 
@@ -116,6 +116,12 @@
 
 * 昭文社
     * 観光スポット情報配信サービス「MAPPLE観光情報API」
+    * 一部機能制限があります。
+        * MAPPLE観光情報API      : 会場内、かつ、SOAPベースのAPIのみ利用可
+        * MAPPLE API POIプラス   : 会場内、かつ、SOAPベースのAPIのみ利用可
+        * MAPPLE API （地図画像）: 利用制限なし
+
+
     * (詳細は当日配布資料にてご紹介させていただきます)
 
 * YuMake
@@ -148,6 +154,7 @@
 <img src="./doc/images/axis_image.png" width="600px">
 
 * 以下については走行データが途中で終了または一部欠けていますのでご注意ください。
+  #走行データの再生が終了するとControl-UIのメーターの動作が止まりますが、動画の再生はそのまま継続されます。
     * 01.浅草寺雷門→言問橋
     * 11.塩浜→東京タワー(Theta)
 
@@ -157,6 +164,15 @@
     * 66.前山ゲレンデ→蓮池
 
 * 3DカメラThetaの動画はControl-UI上のYoutubeウインドウでマウス操作により視点変更が可能です。ただし、確認した限りではUbuntu12.04上のGoogle ChromeではYoutubeの3D動画機能が正しく動作しませんでした。
+
+* バックアップ用サーバ
+  Control-UI用サーバは上記に紹介したものを主に使用しますが、障害発生時のためにバックアップ用の2ndサーバを準備してあります。
+    * 1stサーバ:
+        * http://52.193.125.145:3000/cluster/controlindex.html?json=20151221-nihonbashi-ginza.json
+        * http://52.193.125.145:3000/MapTool/osm_mapping.html
+    * 2ndサーバ:
+        * http://52.193.60.25:3000/cluster/controlindex.html?json=20151221-nihonbashi-ginza.json
+        * http://52.193.60.25:3000/MapTool/osm_mapping.html
 
 ## FAQ
 
