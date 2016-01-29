@@ -12,7 +12,7 @@ var polylineOptions = {
 //Extend the Default marker class
 var redCarIcon = L.Icon.Default.extend({
    options: {
-         iconUrl: '../img/redcar.png',
+         iconUrl: './img/redcar.png',
          iconSize:  [36, 24],
          iconAnchor: [20, 10],
          popupAnchor: [0, 0]
