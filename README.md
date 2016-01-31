@@ -174,7 +174,7 @@
         * http://52.193.60.25:3000/cluster/controlindex.html?json=20151221-nihonbashi-ginza.json
         * http://52.193.60.25:3000/MapTool/osm_mapping.html
 
-## ファイル
+## 発表スライド
 
 * ハッカソンガイダンス スライド [link](./doc/files/hackathon_guidance.pdf)
 
@@ -186,8 +186,10 @@
     * AGL/ルネサスエレクトロニクス 宗像様 スライド
     * 注）RAWボタンでダウンロードしてください
 
+
 ## FAQ
 
 wikiの[FAQ](https://github.com/access-company/autoweb-hackathon/wiki)をご参照ください。
 (当日、会場での質問なども適宜アップしていきます)
+
 
