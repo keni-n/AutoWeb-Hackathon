@@ -179,12 +179,12 @@
 * ハッカソンガイダンス スライド [link](./doc/files/hackathon_guidance.pdf)
 
 * WebをクルマにつなぐW3Cの国際標準化
-  (慶応大学 芦村先生 スライド) [link](./doc/files/w3c_doukou.pdf)
-  注）RAWボタンでダウンロードしてください
+    * (慶応大学 芦村先生 スライド) [link](./doc/files/w3c_doukou.pdf)
+    * 注）RAWボタンでダウンロードしてください
 
 * 車載向けLinuxディストリビューション AGL 概要紹介
-  (AGL/ルネサスエレクトロニクス 宗像様 スライド) [link](./doc/files/agl_intro_kddi.pdf)
-  注）RAWボタンでダウンロードしてください
+    * (AGL/ルネサスエレクトロニクス 宗像様 スライド) [link](./doc/files/agl_intro_kddi.pdf)
+    * 注）RAWボタンでダウンロードしてください
 
 ## FAQ
 
