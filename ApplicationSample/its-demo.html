@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      
+      <!-- vehicle api 必須 : ここから-->
+      <script src="http://52.193.125.145:3000/socket.io/socket.io.js"></script> 
+      <script src="http://52.193.125.145:3000/www/js/vehicleAPI.js"></script>
+      <script src="http://52.193.125.145:3000/www/js/vehicleAPI-client.js"></script>
+      <script>
+        //var roomID = "YOUR.NAME.HERE@example.com"; //ユニークな文字列に変更して下さい
+        var roomID = "surata0000"; //ユニークな文字列に変更して下さい
+        
+        window.onload = function () {
+          document.getElementById("WSRoomID").innerHTML = roomID;
+          var msg = {"roomID":roomID, "data":"NOT REQUIRED"};
+          socket.emit('joinRoom', JSON.stringify(msg));        
+        }
+      </script>
+      <!-- vehicle api 必須 : ここまで -->
+    
+      <!--以下コピペ -->  
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.12/d3.min.js" charset="utf-8"></script>
+      <style>
+          svg {width: 800px; height: 150px; border: 1px solid black;}
+          .divFrame {position:relative; z-index:1;}
+          .dataLine { fill: none; stroke: darkgreen; stroke-width:1px;}
+          .xGrid { fill: none; stroke: black; stroke-width:0.2px; stroke-dasharray:5 5;}
+          .yGrid { fill: none; stroke: black; stroke-width:0.5px; stroke-dasharray:5 5;}
+          .axis text{ font-family: sans-serif; font-size: 3px; opacity: 0.7;}
+
+          .dataLabel {
+              position: absolute;
+              left: 5px;top: 5px;
+              color: black;opacity: 0.3;
+              font-weight: bold; 
+              font-size: 25px; font-family: "sans-serif";
+              z-index: 1;
+          }
+          .tooltip-content {
+              visibility: hidden;
+              position: absolute;
+              width: 120px;
+              height: 38px;
+              left: 100px; top: 100px;
+              background-color: #ffffe1;
+              border: 1px black solid;
+              padding: 3px;
+              z-index: 2;
+              opacity: 0.7;
+              font-size:12px;
+          }
+          .clsFrame {
+              border: 1px black solid;
+              height: 20px;
+              background-color: #dddddd;
+              margin: 2px;
+              padding: 1px;
+              display:inline-block;
+          }
+          #idBtnSetAll {
+              height: 20px;
+          }
+
+      </style>
+      <script type="text/javascript" src="js/graph.js"></script>
+
+ 
+      <script>
+        var arryVehicleSpeed = []; 
+        var arryLat = []; 
+        var arryLng = [];
+        var tmp = null;
+        var o = {};
+
+        var fnAxisConv_VehicleSpeed = function(d,i) {
+            var ret = d / 1000;
+            return ret;
+        }
+ 
+        var vehicleSpeedSub = navigator.vehicle.vehicleSpeed.subscribe(function(vehicleSpeed) {
+          console.log("vehicle speed changed to: " + vehicleSpeed.speed);
+
+          tmp = {"time":Number(vehicleSpeed.timeStamp), 
+                 "value":Number(vehicleSpeed.speed)};
+          arryVehicleSpeed.push(tmp);
+
+          document.getElementById("VehicleSpeed").innerHTML = Math.floor(vehicleSpeed.speed /1000);
+
+          //ここでグラフ再描画
+          //VehicleSpeed
+          //if (arryVehicleSpeed[0] !== null &&
+          //    arryVehicleSpeed[0] !== undefined) 
+          {
+
+            o.dataSet = arryVehicleSpeed;
+            o.svgId = "svgVehicleSpeed"; o.title = "VehicleSpeed[km/h]";
+            //o.startTime = dataSet.startTime + offsetTime;
+            o.startTime = arryVehicleSpeed[0].time;
+            //o.endTime = dataSet.endTime;
+            o.endTime = arryVehicleSpeed[arryVehicleSpeed.length - 1].time;
+            o.minVal = 0;
+            o.maxVal = 50000;
+            o.fnYAxisConv = fnAxisConv_VehicleSpeed;
+            drawGraphObj(o);
+
+          }
+
+        });
+        var latSub = navigator.vehicle.location.subscribe(function(location) {
+          console.log("latitude changed to: " + location.latitude);
+          console.log("longitude changed to: " + location.longitude);
+
+          tmp = {"time":Number(location.timeStamp), 
+                 "value":Number(location.latitude)};
+          arryLat.push(tmp);
+
+          tmp = {"time":Number(location.timeStamp), 
+                 "value":Number(location.longitude)};
+          arryLng.push(tmp);
+
+          document.getElementById("Latitude").innerHTML = location.latitude;
+          document.getElementById("Longitude").innerHTML = location.longitude;
+
+          //ここでグラフ再描画
+
+          //Lat
+          o.dataSet = arryLat;
+          o.svgId = "svgLat";o.title = "Lat[deg]";
+          //o.startTime = dataSet.startTime + offsetTime;
+          o.startTime = arryLat[0].time;
+          //o.endTime = dataSet.endTime;
+          o.endTime = arryLat[arryLat.length - 1].time;
+          o.minVal = 35.690;
+          o.maxVal = 35.720;
+          //o.fnYAxisConv = fnRoundDecimal5th;
+          drawGraphObj(o);
+
+          //Lng
+          o.dataSet = arryLng;
+          o.svgId = "svgLng";o.title = "Lng[deg]";
+          //o.startTime = dataSet.startTime + offsetTime;
+          o.startTime = arryLng[0].time;
+          //o.endTime = dataSet.endTime;
+          o.endTime = arryLng[arryLng.length - 1].time;
+          o.minVal = 139.795;
+          o.maxVal = 139.815;
+          //o.fnYAxisConv = fnRoundDecimal5th;
+          drawGraphObj(o);
+
+
+        });
+       
+      </script>
+    </head>
+    <body>
+      <div>
+        Room ID:<span id="WSRoomID"> </span>
+      </div>
+      <div>
+        Latitude:<span id="Latitude"> </span> [km/h]
+      </div>
+      <div>
+        Longitude:<span id="Longitude"> </span> [km/h]
+      </div>
+      <div>
+        VehicleSpeed:<span id="VehicleSpeed"> </span> [km/h]
+      </div>
+
+
+    <div class="divFrame"><svg id="svgLat"></svg></div>
+    <div class="divFrame"><svg id="svgLng"></svg></div>
+    <div class="divFrame"><svg id="svgVehicleSpeed"></svg></div>
+
+
+    </body>
+</html>
