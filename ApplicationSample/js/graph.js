@@ -888,7 +888,8 @@ function drawGraph(a_arryData, a_svgId, a_title, a_startTime, a_endTime, a_yMinV
         xMaxVal = a_endTime;
 
     //1000000は小数以下値のため
-    var xDomainSize = xMaxVal - xMinVal;
+    //var xDomainSize = xMaxVal - xMinVal;
+    var xDomainSize = 180000; //3minに固定
     var yDomainSize =(yMaxVal * 1000000 - yMinVal * 1000000) / 1000000;
     var yDomainAve = ((yMaxVal * 1000000 + yMinVal * 1000000)/2) / 1000000;
     // 値が変化しなかった場合、yDomainSize == 0になる
@@ -898,7 +899,7 @@ function drawGraph(a_arryData, a_svgId, a_title, a_startTime, a_endTime, a_yMinV
 
     //xDomainSizeが15minより大きい場合svg幅を変更する(横軸が詰まり過ぎないため)
     var minuteWidth = 40;
-    var defaultWidth = 1300;
+    var defaultWidth = 300; //1300;
     document.getElementById(a_svgId).style.width = defaultWidth; //デフォルト幅に戻す
     if (xDomainSize > (32*60*1000)) {
         var min = Math.round(xDomainSize/(60*1000));
@@ -1006,8 +1007,10 @@ function drawGraph(a_arryData, a_svgId, a_title, a_startTime, a_endTime, a_yMinV
     */
 
     //横軸目盛
-    var xAxisRange = d3.range(xMinVal-xMinVal, xMaxVal-xMinVal, 60 * 1000); //60sec単位
-    var xScale = d3.scale.linear().domain([xMinVal-xMinVal, xMaxVal-xMinVal]).range([xRangeMin, xRangeMax]);
+    //var xAxisRange = d3.range(xMinVal-xMinVal, xMaxVal-xMinVal, 60 * 1000); //60sec単位
+    var xAxisRange = d3.range(0, 180 * 1000, 60 * 1000); //3minに固定
+    //var xScale = d3.scale.linear().domain([xMinVal-xMinVal, xMaxVal-xMinVal]).range([xRangeMin, xRangeMax]);
+    var xScale = d3.scale.linear().domain([0, 180*1000]).range([xRangeMin, xRangeMax]);
     var xAxis = d3.svg.axis()
         .scale(xScale)  //Axisの値の範囲(domain)と、画面上のサイズ(range)
         .tickValues(xAxisRange) //目盛を置く値の配列
