@@ -842,12 +842,13 @@ function initGraph(arg_jsonFile, arg_offset) {
  * a_fnYAxisConv: Y軸目盛用換算関数(vehicleSpeed(=m/h値)の目盛を[km/h]表示にしたい場合など)
  */
 function drawGraphObj(a_obj) {
-    drawGraph(a_obj.dataSet, a_obj.svgId, a_obj.title, a_obj.startTime, a_obj.endTime, a_obj.minVal, a_obj.maxVal, a_obj.fnYAxisConv);
+    drawGraph(a_obj.dataSet, a_obj.svgId, a_obj.title, a_obj.startTime, a_obj.endTime, a_obj.minVal, a_obj.maxVal, a_obj.fnYAxisConv, a_obj.xTranslate, a_obj.lineClass);
 }
-function drawGraph(a_arryData, a_svgId, a_title, a_startTime, a_endTime, a_yMinVal, a_yMaxVal, a_fnYAxisConv) {
+function drawGraph(a_arryData, a_svgId, a_title, a_startTime, a_endTime, a_yMinVal, a_yMaxVal, a_fnYAxisConv, a_xTranslate, a_lineClass) {
 
     var xMargin = 10;
-    var yMargin = 10;
+    var xPaddingLeft = 90;
+    var yMargin = 30;
     var yMaxVal, yMinVal;
     var xMaxVal, xMinVal;
     var yOffset;
@@ -900,33 +901,33 @@ function drawGraph(a_arryData, a_svgId, a_title, a_startTime, a_endTime, a_yMinV
     //xDomainSizeが15minより大きい場合svg幅を変更する(横軸が詰まり過ぎないため)
     var minuteWidth = 40;
     var defaultWidth = 300; //1300;
-    document.getElementById(a_svgId).style.width = defaultWidth; //デフォルト幅に戻す
-    if (xDomainSize > (32*60*1000)) {
-        var min = Math.round(xDomainSize/(60*1000));
-        min = min+1;
-        //1min 40pxとしてsvg幅を再設定
-        document.getElementById(a_svgId).style.width = min * minuteWidth;
-        xRangeMax = svgWidth - xMargin*2
-    }
-
     var svg = document.getElementById(a_svgId);
     if (svg === undefined || svg === null)
         console.log("debug stop");
     var svgWidth = document.getElementById(a_svgId).clientWidth;
     var svgHeight = document.getElementById(a_svgId).clientHeight;
-
     var xRangeMin = 0;
-    var xRangeMax = svgWidth - xMargin*2
+    var xRangeMax = svgWidth - xMargin*2 - xPaddingLeft;
     var yRangeMin = 0;
     var yRangeMax = svgHeight - yMargin*2;
-
-    yOffset = (yRangeMax - yRangeMin)/2 + yMargin;
-
     var yRangeSize = yRangeMax - yRangeMin;
     var xRangeSize = xRangeMax - xRangeMin;
 
     var timeOffset = 0;
     var initialVal = 0;
+
+    document.getElementById(a_svgId).style.width = defaultWidth; //デフォルト幅に戻す
+
+    //時間幅が32分より大きい場合、x方向の単位幅を調整する
+    if (xDomainSize > (32*60*1000)) {
+        var min = Math.round(xDomainSize/(60*1000));
+        min = min+1;
+        //1min 40pxとしてsvg幅を再設定
+        document.getElementById(a_svgId).style.width = min * minuteWidth;
+        xRangeMax = svgWidth - xMargin*2 - xPaddingLeft;
+    }
+
+    yOffset = (yRangeMax - yRangeMin)/2 + yMargin;
 
     //2回目以降は初回に追加した要素をまず削除
     {
@@ -941,9 +942,12 @@ function drawGraph(a_arryData, a_svgId, a_title, a_startTime, a_endTime, a_yMinV
             }
         }
     }
-    var elem = document.createElement('div');
+    
+    var elem = null;
+    elem = document.createElement('div');
     elem.classList.add("dataLabel");
-    elem.innerText = a_title;
+    //elem.innerText = a_title;
+    elem.innerText = "";
     document.getElementById(a_svgId).parentNode.appendChild(elem);
 
     // data line
@@ -964,7 +968,8 @@ function drawGraph(a_arryData, a_svgId, a_title, a_startTime, a_endTime, a_yMinV
         })
     var lineElem = d3.select("#" + a_svgId)
         .append("path")
-        .attr("class", "dataLine")
+        //.attr("class", "dataLine")
+        .attr("class", a_lineClass)
         .attr("d", line(a_arryData))
 
     // 縦グリッド
@@ -1015,7 +1020,7 @@ function drawGraph(a_arryData, a_svgId, a_title, a_startTime, a_endTime, a_yMinV
         .scale(xScale)  //Axisの値の範囲(domain)と、画面上のサイズ(range)
         .tickValues(xAxisRange) //目盛を置く値の配列
         //.ticks(10)
-        .orient("top")
+        .orient("bottom") //.orient("top")
         .innerTickSize(4)
         //.outerTickSize(10)
         .tickPadding(3)
@@ -1026,13 +1031,13 @@ function drawGraph(a_arryData, a_svgId, a_title, a_startTime, a_endTime, a_yMinV
     d3.select("#" + a_svgId)
         .append("g")
         .attr("class", "axis")
-        .attr("transform", "translate("+xMargin+","+ (svgHeight-yMargin) +")")
+        .attr("transform", "translate("+xMargin +","+ (svgHeight-yMargin) +")")
         .call(xAxis)
         .selectAll("path,line")
         .attr("fill", "none")
-        .attr("stroke", "black")
+        .attr("stroke", "white") //.attr("stroke", "black")
         .attr("shape-rendering", "crispEdges")
-        .attr("opacity", 0.7)
+        .attr("opacity", 1) //.attr("opacity", 0.7)
     
     //縦軸目盛
     //var yAxisRange = d3.range(yMinVal-yMinVal, yMaxVal-yMinVal, 10); //60sec単位
@@ -1040,10 +1045,11 @@ function drawGraph(a_arryData, a_svgId, a_title, a_startTime, a_endTime, a_yMinV
     var yAxis = d3.svg.axis()
         .scale(yScale)
         //.tickValues(yAxisRange)
-        .orient("right")
+        .orient("left") //.orient("right")
         .ticks(5) //単純に５コ目盛をつけておく
         //.innerTickSize(4)
-        //.tickPadding(3)
+        .tickPadding(5) //.tickPadding(3)
+        //.attr("stroke", "grey")
         .tickFormat(a_fnYAxisConv)
 
     d3.select("#" + a_svgId)
@@ -1053,9 +1059,9 @@ function drawGraph(a_arryData, a_svgId, a_title, a_startTime, a_endTime, a_yMinV
         .call(yAxis)
         .selectAll("path,line")
         .attr("fill", "none")
-        .attr("stroke", "black")
+        .attr("stroke", "white") //.attr("stroke", "black")
         .attr("shape-rendering", "crispEdges")
-        .attr("opacity", 0.7)
+        .attr("opacity", 1) //.attr("opacity", 0.7)
 
     //mouse hoverで時刻、経過時間、値を表示したい
     var targ = document.getElementById(a_svgId);
