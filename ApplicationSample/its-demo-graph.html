@@ -4,19 +4,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <!-- vehicle api 必須 : ここから-->
-    <!--
-    <script src="http://52.193.125.145:3000/socket.io/socket.io.js"></script> 
-    <script src="http://52.193.125.145:3000/www/js/vehicleAPI.js"></script>
-    <script src="http://52.193.125.145:3000/www/js/vehicleAPI-client.js"></script>
-    -->
-
     <script src="http://10.5.162.79:3000/socket.io/socket.io.js"></script> 
     <script src="http://10.5.162.79:3000/www/js/vehicleAPI.js"></script>
     <script src="http://10.5.162.79:3000/www/js/vehicleAPI-client.js"></script>
 
     <script>
       var roomID = "YOUR.NAME.HERE@example.com"; //ユニークな文字列に変更して下さい
-      //var roomID = "admin@kddi-ri.jp"; //ユニークな文字列に変更して下さい
 
       function joinRoom() {
         document.getElementById("WSRoomID").innerHTML = roomID;
@@ -27,31 +20,12 @@
     </script>
     <!-- vehicle api 必須 : ここまで -->
 
-    <!-- Map -->
-    <!--
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-    <script type="text/javascript" src="./js/map.js"></script>
-    <style>
-      #map{
-        width:400px;
-        height:800px;
-        /*display: block;*/
-        /*float: left;*/
-      }
-    </style>
-    -->
     <!--Graph用 -->  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.12/d3.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="js/graph.js"></script>
-    <!-- script type="text/javascript" src="js/its-demo-graph.js"></script -->
     <script type="text/javascript" src="js/its-demo-graph.js"></script>
     <link rel="stylesheet" href="css/graph-style.css" />
 
-    <!-- for Map -->
-    <!--
-    <script type="text/javascript" src="js/its-demo-map.js"></script>
-    -->
   </head>
   <body>
 
@@ -70,18 +44,8 @@
       </div>
     </div>
 
-
-    <!-- div class="divFrame"><svg id="svgLat"></svg></div>
-  <div class="divFrame"><svg id="svgLng"></svg></div>
-  <div class="divFrame"><svg id="svgVehicleSpeed"></svg></div -->
     <div style="display: inline-block;">
-      <!--
-      <div style="width:100%;">
-        <div id="map" style="float:left; margin-right:30px; "></div>
-      </div>
-      -->
       <div id="idGraphRegion">
-        <!-- div id="idGraphFrame" style="border:black; width:100%" -->
         <div class="clsGraphFrame">
           <span class="spanTitle"></span>
           <span class="divFrame clsGraphTitle">緯度 [度]</span>
@@ -95,7 +59,6 @@
           <span class="divFrame"><svg id="svgLng"></svg></span>
           <span class="divFrame"><svg id="svgVehicleSpeed"></svg></span>
         </div><br>
-        <!-- div style="display:block; width:100%"></div -->
         <div class="clsGraphFrame">
           <span class="spanTitle">Traffic info center</span>
           <span class="divFrame"><svg id="svgLatLv2"></svg></span>
@@ -112,6 +75,5 @@
     </div>
 
   </body>
-
 </html>
 

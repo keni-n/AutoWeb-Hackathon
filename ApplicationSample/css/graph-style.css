@@ -1,8 +1,5 @@
-/*svg {width: 1300px; height: 150px; border: 1px solid black;}*/
-/*svg {width: 300px; height: 250px; border: 2px solid white; background-color:#333333; padding-left: 90px; padding-bottom: 20px; margin-bottom: 0px; }*/
 svg {width: 300px; height: 250px; border: 2px solid white; background-color:#333333; padding-left: 90px; padding-bottom: 20px; margin-bottom: 0px; }
 .divFrame {position:relative; z-index:1;}
-/*.divFrame {position:relative; z-index:1; clear: left;}*/
 
 /*折線グラフの線設定*/
 .clsLineVSpeed { fill: none; stroke: dodgerblue; stroke-width:2.8px; z-index:10; opacity:1;}
@@ -11,7 +8,7 @@ svg {width: 300px; height: 250px; border: 2px solid white; background-color:#333
 
 .xGrid { fill: none; stroke: white; stroke-width:2px; stroke-dasharray:5 5;}
 .yGrid { fill: none; stroke: white; stroke-width:2px; stroke-dasharray:5 5;}
-.axis text{ font-family: sans-serif; font-size: 16px; font-weight: bold; opacity: 1; fill: white; } //メモリ文字設定
+.axis text{ font-family: sans-serif; font-size: 16px; font-weight: bold; opacity: 1; fill: white; } /* font for scale */
 .scale { font-family: sans-serif; font-size: 15px; opacity: 1; fill: black; }
 
 .dataLabel {
@@ -44,19 +41,15 @@ svg {width: 300px; height: 250px; border: 2px solid white; background-color:#333
   display:inline-block;
 }
 
-
 #idBtnSetAll {
   height: 20px;
 }
 .clsGraphFrame {
-  /*float: left;*/
   display:inline-block;
-  /* -- for debug -- */
   border:solid black 2px; 
 }
 
 .divFrame {
-  /* -- for debug -- */
   display:inline-block;
   width:400px;
   border:solid black 2px; 
@@ -75,5 +68,4 @@ svg {width: 300px; height: 250px; border: 2px solid white; background-color:#333
   font-size: 30px;
   font-family: meiryo, "MS PGothic", "sans-serif";
 }
-
 

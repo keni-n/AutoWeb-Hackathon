@@ -4,22 +4,14 @@
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
       <!-- vehicle api 必須 : ここから-->
-      <!--      
-      <script src="http://52.193.125.145:3000/socket.io/socket.io.js"></script>
-      <script src="http://52.193.125.145:3000/www/js/vehicleAPI.js"></script>
-      <script src="http://52.193.125.145:3000/www/js/vehicleAPI-client.js"></script>
-      -->
-
       <script src="http://10.5.162.79:3000/socket.io/socket.io.js"></script>
       <script src="http://10.5.162.79:3000/www/js/vehicleAPI.js"></script>
       <script src="http://10.5.162.79:3000/www/js/vehicleAPI-client.js"></script>
-
       <!-- vehicle api 必須 : ここまで -->
       
       <!-- Map -->
       <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
       <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-      <!-- script type="text/javascript" src="./js/map.js"></script -->
       <script type="text/javascript" src="./js/its-demo-map.js"></script>
       <style>
         #map{
@@ -31,9 +23,7 @@
 
     <!-- vehicle api 必須 : ここから-->            
     <script>
-    //var roomID = "YOUR.NAME.HERE@example.com";
-    //var roomID = "surata0000";
-    var roomID = "admin@kddi-ri.jp";
+    var roomID = "YOUR.NAME.HERE@example.com";
 
     function joinRoom() {
         document.getElementById("WSRoomID").innerHTML = roomID;
@@ -51,7 +41,6 @@
           gVehicleSpeed = Math.floor(vehicleSpeed.speed /1000);
         });
         var engineSpeedSub = navigator.vehicle.engineSpeed.subscribe(function(engineSpeed) {
-          //gEngineSpeed = Math.floor(engineSpeed.speed /1000);
           gEngineSpeed = engineSpeed.speed;
         });
 

@@ -80,8 +80,6 @@ var vehicleSpeedSub = navigator.vehicle.vehicleSpeed.subscribe(function(vehicleS
   }else{
     val3 = null;
   }
-  //tmp = {"time":Number(vehicleSpeed.timeStamp), 
-  //       "value":Number(vehicleSpeed.speed)};
   tmp =  {"time":tm, "value":val};
   tmp2 = {"time":tm, "value":val2};
   tmp3 = {"time":tm, "value":val3};
@@ -92,16 +90,14 @@ var vehicleSpeedSub = navigator.vehicle.vehicleSpeed.subscribe(function(vehicleS
 
   document.getElementById("VehicleSpeed").innerHTML = Math.floor(vehicleSpeed.speed /1000);
 
-  //ここでグラフ再描画
+  //グラフ描画
   //VehicleSpeed
 
   //Lv1
   o.dataSet = arryVehicleSpeed;
   o.svgId = "svgVehicleSpeed";
   o.title = "VehicleSpeed[km/h]";
-  //o.startTime = dataSet.startTime + offsetTime;
   o.startTime = arryVehicleSpeed[0].time;
-  //o.endTime = dataSet.endTime;
   o.endTime = arryVehicleSpeed[arryVehicleSpeed.length - 1].time;
   o.minVal = 0;
   o.maxVal = 50000;
@@ -121,7 +117,6 @@ var vehicleSpeedSub = navigator.vehicle.vehicleSpeed.subscribe(function(vehicleS
   drawGraphObj(o);
 
 });
-
 
 var latSub = navigator.vehicle.location.subscribe(function(location) {
   console.log("latitude changed to: " + location.latitude);
@@ -219,17 +214,4 @@ var latSub = navigator.vehicle.location.subscribe(function(location) {
   drawGraphObj(o);
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -8,8 +8,7 @@
       <script src="http://52.193.125.145:3000/www/js/vehicleAPI.js"></script>
       <script src="http://52.193.125.145:3000/www/js/vehicleAPI-client.js"></script>
       <script>
-        //var roomID = "YOUR.NAME.HERE@example.com"; //ユニークな文字列に変更して下さい
-        var roomID = "surata0000"; //ユニークな文字列に変更して下さい
+        var roomID = "YOUR.NAME.HERE@example.com"; //ユニークな文字列に変更して下さい
         
         window.onload = function () {
           document.getElementById("WSRoomID").innerHTML = roomID;
@@ -22,7 +21,6 @@
       <!--以下コピペ -->  
       <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.12/d3.min.js" charset="utf-8"></script>
       <style>
-          /*svg {width: 1300px; height: 150px; border: 1px solid black;}*/
           svg {width: 300px; height: 250px; border: 2px solid white; background-color:#333333; padding-left: 90px; padding-bottom: 20px; margin-bottom: 0px; }
           .divFrame {position:relative; z-index:1;}
 
@@ -72,7 +70,6 @@
       </style>
       <script type="text/javascript" src="js/graph.js"></script>
 
- 
       <script>
         var arryVehicleSpeed = []; 
         var arryVehicleSpeedLv2 = []; 
@@ -114,7 +111,7 @@
 
           console.log("vehicle speed changed to: " + vehicleSpeed.speed);
           tm  = Number(vehicleSpeed.timeStamp);
-          //val=0の時、グラフが枠線にかかると見にくいので +1 した
+          //val=0の時、グラフが枠線にかかると見にくいので +500 した
           val = Number(vehicleSpeed.speed) + 500;
           val2 = val > 40000 ? 40000 : val;
           if  ((tm - tmEmergencyStart > 0) && (tmEmergencyEnd - tm > 0)) {
@@ -122,8 +119,6 @@
           }else{
              val3 = null;
           }
-          //tmp = {"time":Number(vehicleSpeed.timeStamp), 
-          //       "value":Number(vehicleSpeed.speed)};
           tmp =  {"time":tm, "value":val};
           tmp2 = {"time":tm, "value":val2};
           tmp3 = {"time":tm, "value":val3};
@@ -134,16 +129,14 @@
 
           document.getElementById("VehicleSpeed").innerHTML = Math.floor(vehicleSpeed.speed /1000);
 
-          //ここでグラフ再描画
+          //グラフ描画
           //VehicleSpeed
 
           //Lv1
           o.dataSet = arryVehicleSpeed;
           o.svgId = "svgVehicleSpeed";
           o.title = "VehicleSpeed[km/h]";
-          //o.startTime = dataSet.startTime + offsetTime;
           o.startTime = arryVehicleSpeed[0].time;
-          //o.endTime = dataSet.endTime;
           o.endTime = arryVehicleSpeed[arryVehicleSpeed.length - 1].time;
           o.minVal = 0;
           o.maxVal = 50000;
@@ -215,22 +208,19 @@
           document.getElementById("Latitude").innerHTML = location.latitude;
           document.getElementById("Longitude").innerHTML = location.longitude;
 
-          //ここでグラフ再描画
+          //グラフ描画
 
           //Lat
           o.dataSet = arryLat;
           o.svgId = "svgLat";
           o.title = "Lat[deg]";
-          //o.startTime = dataSet.startTime + offsetTime;
           o.startTime = arryLat[0].time;
-          //o.endTime = dataSet.endTime;
           o.endTime = arryLat[arryLat.length - 1].time;
           o.minVal = 35.690;
           o.maxVal = 35.720;
           o.fnYAxisConv = fnRoundDecimal5th;
           o.xTranslate = 50;
           o.lineClass = "clsLineLat";
-          //o.lineClass = "clsLineVSpeed";
           drawGraphObj(o);
 
           o.dataSet = arryLatLv2;
@@ -241,20 +231,16 @@
           o.svgId = "svgLatLv3";
           drawGraphObj(o);
 
-
           //Lng
           o.dataSet = arryLng;
           o.svgId = "svgLng";o.title = "Lng[deg]";
-          //o.startTime = dataSet.startTime + offsetTime;
           o.startTime = arryLng[0].time;
-          //o.endTime = dataSet.endTime;
           o.endTime = arryLng[arryLng.length - 1].time;
           o.minVal = 139.795;
           o.maxVal = 139.815;
           o.fnYAxisConv = fnRoundDecimal5th;
           o.xTranslate = 50;
           o.lineClass = "clsLineLng";
-          //o.lineClass = "clsLineVSpeed";
           drawGraphObj(o);
 
           o.dataSet = arryLngLv2;
@@ -283,10 +269,6 @@
         VehicleSpeed:<span id="VehicleSpeed"> </span> [km/h]
       </div>
 
-
-    <!-- div class="divFrame"><svg id="svgLat"></svg></div>
-    <div class="divFrame"><svg id="svgLng"></svg></div>
-    <div class="divFrame"><svg id="svgVehicleSpeed"></svg></div -->
     <div>
     <span class="divFrame"><svg id="svgLat"></svg></span>
     <span class="divFrame"><svg id="svgLng"></svg></span>
@@ -302,7 +284,6 @@
     <span class="divFrame"><svg id="svgLngLv3"></svg></span>
     <span class="divFrame"><svg id="svgVehicleSpeedLv3"></svg></span>
     </div>
-
 
     </body>
 </html>

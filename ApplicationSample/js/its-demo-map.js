@@ -15,7 +15,6 @@ var redCarIcon = L.Icon.Default.extend({
          iconUrl: './img/redcar.png',
          iconSize:  [36, 24],
          iconAnchor: [20, 10],
-         //popupAnchor: [0, 0]
          popupAnchor: [-5, -30]
    }
 });
@@ -40,7 +39,6 @@ function initMap() {
   //ITSデモ用、初期値をスカイツリー近辺に
   initLatitude = 35.71517;
   initLongitude = 139.80146;
-
 
   //map = L.map('map').setView([initLatitude, initLongitude], 16);
   map = L.map('map').setView([initLatitude, initLongitude], 17);
@@ -69,7 +67,6 @@ function clearMap() {
 
   gCount=0;
 }
-
 
 function addMarker2(vspeed, espeed, latitude, longitude) {
   var zIn = 0;
