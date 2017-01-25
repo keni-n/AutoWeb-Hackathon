@@ -192,24 +192,22 @@ JINS MEME raw dataをアルゴリズム処理して算出した情報
 
 * エスディーテック社
     * ドライバーの心拍数、盛り上がり度
+
 * JINS-meme
     * 頭部の加速度（x,y,z）、頭部の回転（roll,pitch,yaw）
 まばたき(強さ、閉眼時間)、視線移動(上下左右を3段階)
 覚醒度(100点満点、連続値)、注意力(100点満点、連続値)
 視線位置(右、中央、左の3段階)
+
 * 昭文社
     * MappleAPI（地図情報、観光情報）
-    * 観光スポット情報配信サービス「MAPPLE観光情報API」
-    * 一部機能制限があります。
-        * MAPPLE観光情報API      : 会場内、かつ、SOAPベースのAPIのみ利用可
-        * MAPPLE API POIプラス   : 会場内、かつ、SOAPベースのAPIのみ利用可
-        * MAPPLE API （地図画像）: 利用制限なし
-        * (詳細は当日配布資料にてご紹介させていただきます)
 
 * YuMake
     * 天気情報API（今日明日天気予報、週間天気予報、時系列天気予報、日の出日の入り、注意報警報、地震情報）
-* IncrementP [link](https://github.com/access-company/AutoWeb-Hackathon/blob/master/doc/files/incrementp/upload_file.zip)
+
+* IncrementP
     * インターネット地図配信サービス「Map Fan API」
+
 * KDDIウェブコミュニケーションズ
     * Twilio API
 
