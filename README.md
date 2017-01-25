@@ -124,7 +124,7 @@ TOYOTA Priusでのテスト走行により走行データを収集しました<b
 
 #### SDTECH vital data
 
-|*interface*|*unit*|*備考*|
+|*interface*|*unit/value*|*備考*|
 |:----------|:------------|:------------|
 |Heartrate|bpm|心拍数/分  |
 |EmotionCluster|0-25|精神的高揚度(気分の盛り上がり)。0 - 25で評価<br>心拍数、体の動き(加速度)、音声情報をアルゴリズム評価して算出  |
@@ -132,7 +132,7 @@ TOYOTA Priusでのテスト走行により走行データを収集しました<b
 #### JINS MEME raw data
 JINS MEME搭載のセンサーの生データ
 
-|*interface*|*unit*|*備考*|
+|*interface*|*unit/value*|*備考*|
 |:----------|:------------|:------------|
 |EyeMoveUp|1-3|目の動き(上向き)。1,2,3で評価。0は信号なし  |
 |EyeMoveDown|1-3|目の動き(上向き)。1,2,3で評価。0は信号なし  |
@@ -157,7 +157,7 @@ JINS MEME raw dataをアルゴリズム処理して算出した情報
 |Attentiveness|0-100|注意力指数。100-60:通常, 60-40:やや低い, 40-0:低い |
 
 #### 座標系について
-車両データとJINS MEMEデータには、加速度、ロール/ピッチ/ヨーという3軸データがありますが、車両とJINS MEMEでは座標系が異なります。
+車両データとJINS MEMEデータには、x/y/z加速度、ロール/ピッチ/ヨーという3軸データがありますが、車両とJINS MEMEでは座標系が異なりますのでご注意ください。
 
 ### 車両データ座標系
 <img src="./doc/images/vehicle_axis1.png" width="600px">
