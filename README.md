@@ -6,23 +6,23 @@
 
 * W3C Automotive Working Group [link](https://www.w3.org/auto/wg/)
     * Vehicle APIの仕様策定をBusiness Groupから引き継ぎ、作業継続中。
+    * 当初は Business Groupから引き継いだ JavaScript API形式の Vehicle API を推進していたが、2016年に API のアーキテクチャを見直し、現在は WebSocket によるサービス形式の新仕様の Vehicle API の定義を推進している。
 
-### 旧バージョン
-一般的なHTML5 API と同じくブラウザ組み込みのJavaScript APIとして定義された
-* W3C Vehicle API Spec(Working Draft)
-    * Vehicle Information API [link](https://www.w3.org/TR/vehicle-information-api/)
+### 本ハッカソンで使用するAPI
+* Spec document
+    * Vehicle Information Access API [link](https://www.w3.org/TR/vehicle-information-api/)
     * Vehicle Data Interfaces [link](https://www.w3.org/TR/vehicle-data/)
-    * コード例:[link](https://www.w3.org/TR/vehicle-information-api/#introduction)
+* コード例:[link](https://www.w3.org/TR/vehicle-information-api/#introduction)
+* 一般的なHTML5 API と同じくブラウザ組み込みのJavaScript APIとして定義されている
 
-### 策定中の最新仕様
-
-新APIは車両に搭載したローカルサーバからWebSocketでJSONフォーマットの車両データを受け取り利用するシステム構成となっておりブラウザによるサポートが必要とされない
-* W3C Vehicle API Spec(Working Draft)
+### [参考]策定中の最新仕様
+* Spec document
     * Vehicle Information Service Specification [link](https://www.w3.org/TR/vehicle-information-service/)
     * Vehicle Signal Client Specification (not ready)
-    * コード例:[link](https://www.w3.org/TR/vehicle-information-service/#introduction)
+* コード例:[link](https://www.w3.org/TR/vehicle-information-service/#introduction)
+* 新APIは車両に搭載したローカルサーバからWebSocketでJSONフォーマットの車両データを受け取り利用するシステム構成となっておりブラウザによるサポートが必要とされない
 
-### 注)最新仕様はまだ未確定なこともあり、本ハッカソンでは前バージョンのAPIを使用します
+### 注)最新仕様はまだ定義中の部分があるため、本ハッカソンでは前バージョンのAPIを使用します
 
 ## 2.ハッカソン開発環境について
 
@@ -54,8 +54,8 @@ TOYOTA Priusでのテスト走行により走行データを収集しました<b
 メールアドレスなどユニークさが保証される文字列を使用してください
 
 #### C. クライアントアプリケーション（ハッカソン参加者開発アプリ）
-ハッカソン参加者の皆様が開発するWebアプリケーションです。ハッカソンSDKで利用可能となる W3C Vehicle APIを使用することで、自動車の走行情報（及び、走行中のセンサー系データ）を利用できます。
-クライアントアプリケーションの作り方はApplicationSampleをご参照ください。Control-UIとの連携動作に必要な最低限のコードで記述されています。
+ハッカソン参加者の皆様が開発するWebアプリケーションです。<br>ハッカソンSDKで利用可能となる W3C Vehicle APIを使用することで、自動車の走行情報（及び、走行中のセンサー系データ）を利用できます。<br>
+クライアントアプリケーションの作り方はApplicationSampleをご参照ください。<br>Control-UIとの連携動作に必要な最低限のコードで記述されています。
 
 ##### ApplicationSample
 
@@ -79,7 +79,8 @@ TOYOTA Priusでのテスト走行により走行データを収集しました<b
 ##### 走行パターンリスト
 * 利用可能な走行パターン（経路、発生イベント)については下記リストをご参照ください。<br>
 また各走行パターンのデータの詳細についてはマップツールでご確認ください。<br>
-    * 走行パターンリスト [link](./doc/files/course_list.pdf)
+    * 走行パターンリスト(2015.11～2016.1:センサー系データなし) [link](./doc/files/course_list.pdf)
+    * 走行パターンリスト(2016.11～2017.1) [link](./doc/files/course_list.pdf)
 
 ##### 走行データのダウンロード利用
 * 走行データファイル全体をローカルにダウンロードして利用することも可能です。<br>
