@@ -59,13 +59,16 @@ TOYOTA Priusでのテスト走行により走行データを収集しました<b
 
 ##### ApplicationSample
 
-* [vehicleSpeed](https://github.com/access-company/AutoWeb-Hackathon/blob/master/ApplicationSample/vehicleSpeed.html)
-* [location](https://github.com/access-company/AutoWeb-Hackathon/blob/master/ApplicationSample/location.html)
+* [vehicleAll](https://github.com/access-company/AutoWeb-Hackathon/blob/master/ApplicationSample/vehicleSpeed.html)
+* [sensorAll](https://github.com/access-company/AutoWeb-Hackathon/blob/master/ApplicationSample/vehicleSpeed.html)
+* [location](./ApplicationSample/location.html)
 
+##### 使用手順
 1. ApplicationSampleのコードをgithubから取得し参加者の実行環境に配置する
-2. ApplicationSampleのコード中のRoomID値をControl-UIに設定するRoomIDと合わせておく
-3. ApplicationSampleをChromeブラウザで起動して Control-UIからの走行データ配信を待つ
-4. Control-UIで走行パターンを選択、再生を行うと、AppliationSampleにも走行データが配信されアプリケーションが動作する
+2. ApplicationSampleのコード中のscriptタグで参照するJavaScriptのサーバーIPを使用するサーバーのIP（Control-UIのIP)と合わせておく
+3. ApplicationSampleのコード中のRoomID値をControl-UIに設定するRoomIDと合わせておく
+4. ApplicationSampleをChromeブラウザで起動して Control-UIからの走行データ配信を待つ
+5. Control-UIで走行パターンを選択、再生を行うと、AppliationSampleにも走行データが配信されアプリケーションが動作する
 
 #### D. MapTool
 各走行パターンのデータを、地図とグラフ表示で一覧するツール。利用したいデータの変化(例えば急加速、急減速など)が含まれる走行パターンを探すことができる。
@@ -88,7 +91,22 @@ TOYOTA Priusでのテスト走行により走行データを収集しました<b
     * TODO: link追加
 
 ##### Vehicle API利用コード例
-* TODO:別ページ参照[link](http://....)
+
+get()
+
+    navigator.vehicle.vehicleSpeed.get().then(`
+      `function (vehicleSpeed) {console.log("value:"+vehicleSpeed.speed);},`
+      `function (error) {console.log("There was an error");}`
+    );`
+
+subscribe()/unsubscribe()
+
+    var handle = navigator.vehicle.vehicleSpeed.subscribe(
+      function (vehicleSpeed) {console.log("value:"+vehicleSpeed.speed);
+      navigator.vehicle.vehicleSpeed.unsubscribe(handle);
+    });
+   
+* 各種データの取得方法はApplicationSampleを参照
 
 ## 3. データ項目リスト
 #### vehicle data
@@ -170,17 +188,17 @@ JINS MEME raw dataをアルゴリズム処理して算出した情報
 
 ## 4. マッシュアップAPI
 
-TODO: 要修正
-
 ご協賛をいただいた各社のWebAPIを以下にご紹介します。
 
-* インクリメントP [link](https://github.com/access-company/AutoWeb-Hackathon/blob/master/doc/files/incrementp/upload_file.zip)
-    * インターネット地図配信サービス「Map Fan API」
-
-* twilio [link](https://github.com/access-company/AutoWeb-Hackathon/blob/master/doc/files/twilio/twilio_howto.txt)
-    * 電話/SMSとつながるクラウドAPIサービス「twilio」
-
+* エスディーテック社
+    * ドライバーの心拍数、盛り上がり度
+* JINS-meme
+    * 頭部の加速度（x,y,z）、頭部の回転（roll,pitch,yaw）
+まばたき(強さ、閉眼時間)、視線移動(上下左右を3段階)
+覚醒度(100点満点、連続値)、注意力(100点満点、連続値)
+視線位置(右、中央、左の3段階)
 * 昭文社
+    * MappleAPI（地図情報、観光情報）
     * 観光スポット情報配信サービス「MAPPLE観光情報API」
     * 一部機能制限があります。
         * MAPPLE観光情報API      : 会場内、かつ、SOAPベースのAPIのみ利用可
@@ -189,13 +207,16 @@ TODO: 要修正
         * (詳細は当日配布資料にてご紹介させていただきます)
 
 * YuMake
-    * 天気予報、防災情報、潮汐情報など「YuMake気象情報API」
-    * (詳細は当日配布資料にてご紹介させていただきます)
+    * 天気情報API（今日明日天気予報、週間天気予報、時系列天気予報、日の出日の入り、注意報警報、地震情報）
+* IncrementP [link](https://github.com/access-company/AutoWeb-Hackathon/blob/master/doc/files/incrementp/upload_file.zip)
+    * インターネット地図配信サービス「Map Fan API」
+* KDDIウェブコミュニケーションズ
+    * Twilio API
 
 ## 5. QAサポート
 
-* 開催日の質問にはチャットアプリSlackにより対応いたします。
-* TODO: Slackの説明を追加、またはURLのみここに記載、詳細は当日口頭で。
+* 開催日の質問にはチャットアプリSlackにより対応いたします。<br>
+  [slack](https://vehicleapi2017.slack.com/)
 
 ## 6. 注意事項
 
@@ -230,9 +251,4 @@ TODO: 要修正
     * 66.前山ゲレンデ→蓮池
 
 * 3DカメラThetaの動画はControl-UI上のYoutubeウインドウでマウス操作により視点変更が可能です。ただし、確認した限りではUbuntu12.04上のGoogle ChromeではYoutubeの3D動画機能が正しく動作しませんでした。
-
-## FAQ
-
-TODO: github のwikiを使う?　当日の質問投稿はで行うのでそちらに集中させるか？
-
 
