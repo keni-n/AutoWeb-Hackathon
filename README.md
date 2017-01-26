@@ -39,7 +39,7 @@ TOYOTA Priusでのテスト走行により走行データを収集しました<b
 
 #### B. Control-UI
 ハッカソンサーバーを利用するためのUI。利用したい走行パターンを選択すると、走行動画と走行データが同期した状態で再生される。
-<img src="./doc/images/ctrl-ui.png" width="600px">
+<img src="./doc/images/ctrl-ui.png" width="400px">
  
 * 1stサーバ:
 http://52.193.60.25:3000/cluster/controlindex.html?json=20151221-nihonbashi-ginza.json
@@ -61,7 +61,7 @@ http://13.112.91.95:3000/cluster/controlindex.html?json=20151221-nihonbashi-ginz
 
 #### C. クライアントアプリケーション（ハッカソン参加者開発アプリ）例
 ハッカソン参加者の皆様が開発するWebアプリケーションです。<br>ハッカソンSDKで利用可能となる W3C Vehicle APIを使用することで、自動車の走行情報（及び、走行中のセンサー系データ）を利用できます。<br>
-クライアントアプリケーションの作り方はApplicationSampleをご参照ください。<br>Control-UIとの連携動作に必要な最低限のコードで記述されています。
+クライアントアプリケーションの作り方はApplicationSampleをご参照ください。<br>Control-UIとの連携動作に必要な最低限のコードで記述されています。<br>
 <img src="./doc/images/locationhtml.png" width="400px">
 
 ##### ApplicationSample
@@ -80,8 +80,8 @@ http://13.112.91.95:3000/cluster/controlindex.html?json=20151221-nihonbashi-ginz
 5. 起動済のControl-UIで走行パターンを選択、再生ボタンを押下すると、vehicleall.html にも走行データが配信されアプリケーションが動作する
 
 #### D. MapTool
-各走行パターンのデータを、地図とグラフ表示で一覧するツール。利用したいデータの変化(例えば急加速、急減速など)が含まれる走行パターンを探すことができる。
-<img src="./doc/images/maptool.png" width="400px">
+各走行パターンのデータを、地図とグラフ表示で一覧するツール。利用したいデータの変化(例えば急加速、急減速など)が含まれる走行パターンを探すことができる。<br>
+<img src="./doc/images/maptool.png" width="500px">
 
 * 1stサーバ:
 http://52.193.60.25:3000/MapTool/osm_mapping.html
@@ -106,7 +106,7 @@ http://13.112.91.95:3000/MapTool/osm_mapping.html
 * 走行データファイル全体をローカルにダウンロードして利用することも可能です。<br>
 走行データは本githubの以下パスに配置してあり、リポジトリのクローンにより取得できます。<br>
     * https://github.com/access-company/AutoWeb-Hackathon.git
-        * json/20170110-xxxx.json
+        * json/YYYYMMDD-xxxxxx.json
 
 ##### Vehicle API利用コード例
 
@@ -256,7 +256,7 @@ Slack: https://vehicleapi2017.slack.com/
 
 * IncrementP
     * インターネット地図配信サービス「Map Fan API」
-    * MAPFAN API https://www.mapfan.com/houjin/api/
+    * Map Fan API https://www.mapfan.com/houjin/api/
     * [doc](.doc/files/incrementP_doc.zip)
     * Slack: https://vehicleapi2017.slack.com/messages/mapfan_api/
 
