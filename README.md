@@ -22,7 +22,7 @@
 * コード例:[link](https://www.w3.org/TR/vehicle-information-service/#introduction)
 * 新APIは車両に搭載したローカルサーバからWebSocketでJSONフォーマットの車両データを受け取り利用するシステム構成となっておりブラウザによるサポートが必要とされない
 
-### 注)最新仕様はまだ定義中の部分があるため、本ハッカソンでは前バージョンのAPIを使用します
+### ＊最新仕様はまだ定義中の部分があるため、本ハッカソンでは前バージョンのAPIを使用します
 
 ## 2.ハッカソン開発環境について
 
@@ -39,43 +39,60 @@ TOYOTA Priusでのテスト走行により走行データを収集しました<b
 
 #### B. Control-UI
 ハッカソンサーバーを利用するためのUI。利用したい走行パターンを選択すると、走行動画と走行データが同期した状態で再生される。
+<img src="./doc/images/ctrl-ui.png" width="600px">
+ 
+* 1stサーバ:
+http://52.193.60.25:3000/cluster/controlindex.html?json=20151221-nihonbashi-ginza.json
+* 2ndサーバ:
+http://13.112.91.95:3000/cluster/controlindex.html?json=20151221-nihonbashi-ginza.json
 
 ##### 操作手順
 
-1. [Control-UI](http://52.193.60.25:3000/cluster/controlindex.html?json=20151221-asakusa-skytree.json) を開く
-2. `RoomID` テキストボックスにユニークな文字列を入れ、`Connect`をクリック 
+1. Control-UI をブラウザで開く
+2. RoomID テキストボックスにユニークな文字列を入れ、Connect をクリック 
 3. クライアントアプリケーションを起動しておく(下記ApplicationSampleを参照)
-4. Control-uiのドロップダウンリストから走行パターンを選択する
+4. Control-UIのドロップダウンリストから走行パターンを選択する
 5. 動画エリア内の再生ボタンをクリック
 6. 動画が再生すると共に、走行データが動画と同期して配信されControl-UI上のメーターが動作する
 7. 同時にクライアントアプリケーションにも走行データが配信され、VehicleAPIによるデータ取得が実行される
 
-注)RoomIDに'aaa'などの単純な文字列を使用すると、他の参加者のRoomIDと重複して動作が不正になる可能性があります
-メールアドレスなどユニークさが保証される文字列を使用してください
+注)RoomIDに'aaa'などの単純な文字列を使用すると、他の参加者のRoomIDと重複して動作が不正になる可能性があります<br>
+メールアドレスやその他ユニークさが保証される文字列を使用してください
 
-#### C. クライアントアプリケーション（ハッカソン参加者開発アプリ）
+#### C. クライアントアプリケーション（ハッカソン参加者開発アプリ）例
 ハッカソン参加者の皆様が開発するWebアプリケーションです。<br>ハッカソンSDKで利用可能となる W3C Vehicle APIを使用することで、自動車の走行情報（及び、走行中のセンサー系データ）を利用できます。<br>
 クライアントアプリケーションの作り方はApplicationSampleをご参照ください。<br>Control-UIとの連携動作に必要な最低限のコードで記述されています。
+<img src="./doc/images/locationhtml.png" width="400px">
 
 ##### ApplicationSample
 
-* [vehicleAll](https://github.com/access-company/AutoWeb-Hackathon/blob/master/ApplicationSample/vehicleSpeed.html)
-* [sensorAll](https://github.com/access-company/AutoWeb-Hackathon/blob/master/ApplicationSample/vehicleSpeed.html)
-* [location](./ApplicationSample/location.html)
+* https://github.com/access-company/AutoWeb-Hackathon.git
+    * ApplicationSample/vehicleAll.html
+    * ApplicationSample/sensorAll.html
+    * ApplicationSample/location.html
 
 ##### 使用手順
-1. ApplicationSampleのコードをgithubから取得し参加者の実行環境に配置する
-2. ApplicationSampleのコード中のscriptタグで参照するJavaScriptのサーバーIPを使用するサーバーのIP（Control-UIのIP)と合わせておく
-3. ApplicationSampleのコード中のRoomID値をControl-UIに設定するRoomIDと合わせておく
+1. ApplicationSampleのコードをgithubから取得する<br>
+`$ git clone https://github.com/access-company/AutoWeb-Hackathon.git`
+2. vehicleAll.html 中のscriptタグでインクルードするJavaScriptファイルのサーバーIPを、Control-UIのIP に合わせて変更する
+3. vehicleAll.html 中のRoomID値をControl-UIに設定するRoomIDと合わせて変更する
 4. ApplicationSampleをChromeブラウザで起動して Control-UIからの走行データ配信を待つ
-5. Control-UIで走行パターンを選択、再生を行うと、AppliationSampleにも走行データが配信されアプリケーションが動作する
+5. 起動済のControl-UIで走行パターンを選択、再生ボタンを押下すると、vehicleall.html にも走行データが配信されアプリケーションが動作する
 
 #### D. MapTool
 各走行パターンのデータを、地図とグラフ表示で一覧するツール。利用したいデータの変化(例えば急加速、急減速など)が含まれる走行パターンを探すことができる。
+<img src="./doc/images/maptool.png" width="400px">
+
+* 1stサーバ:
+http://52.193.60.25:3000/MapTool/osm_mapping.html
+* 2ndサーバ:
+http://13.112.91.95:3000/MapTool/osm_mapping.html
+
 ##### 操作手順
-1. [MapTool](http://52.193.60.25:3000/MapTool/osm_mapping.html) を開く
+1. MapToolのURLをChromeブラウザで開く
 2. 画面上のドロップダウンリストから走行パターンを選択する
-3. 走行パターンのデータが、地図上へのマッピングとグラフにより表示される
+3. 走行パターンのデータが、地図上へのマッピングとグラフにより表示される<br>
+注) 取り扱うjsonファイルが大きいため、表示まで時間がかかる場合があります
 
 #### E. その他
 
@@ -88,7 +105,8 @@ TOYOTA Priusでのテスト走行により走行データを収集しました<b
 ##### 走行データのダウンロード利用
 * 走行データファイル全体をローカルにダウンロードして利用することも可能です。<br>
 走行データは本githubの以下パスに配置してあり、リポジトリのクローンにより取得できます。<br>
-    * TODO: link追加
+    * https://github.com/access-company/AutoWeb-Hackathon.git
+        * json/20170110-xxxx.json
 
 ##### Vehicle API利用コード例
 
@@ -106,7 +124,11 @@ subscribe()/unsubscribe()
       navigator.vehicle.vehicleSpeed.unsubscribe(handle);
     });
    
-* 各種データの取得方法はApplicationSampleを参照
+* 各種データの取得方法はApplicationSampleを参照<br>
+https://github.com/access-company/AutoWeb-Hackathon.git
+    * ApplicationSample/vehicleAll.html
+    * ApplicationSample/sensorAll.html
+
 
 ## 3. データ項目リスト
 #### vehicle data
@@ -146,7 +168,7 @@ subscribe()/unsubscribe()
 |*interface*|*unit/value*|*備考*|
 |:----------|:------------|:------------|
 |Heartrate|bpm|心拍数/分  |
-|EmotionCluster|0-25|精神的高揚度(気分の盛り上がり)。0 - 25で評価<br>心拍数、体の動き(加速度)、音声情報をアルゴリズム評価して算出  |
+|EmotionCluster|1-25|精神的高揚度(気分の盛り上がり)。1 - 25で評価<br>心拍数、体の動き(加速度)、音声情報をアルゴリズム評価して算出<br>25:落ち着いている、1:非常に盛り上がっている |
 
 #### JINS MEME raw data
 JINS MEME搭載のセンサーの生データ
@@ -186,35 +208,66 @@ JINS MEME raw dataをアルゴリズム処理して算出した情報
 ### JINS MEME座標系
 <img src="./doc/images/meme_axis.png" width="600px">
 
-## 4. マッシュアップAPI
+## 4. QAサポート
 
-ご協賛をいただいた各社のWebAPIを以下にご紹介します。
+* 開催日の質問にはチャットアプリSlackにより対応いたします。<br>
+    * Slack: https://vehicleapi2017.slack.com/<br>
+    * 一般的な質問: [#general](https://vehicleapi2017.slack.com/messages/general/)
+    * vehicleAPI、開発環境: [#vehicle_api](https://vehicleapi2017.slack.com/messages/vehicle_api/)
+    * マッシュアップAPI: 各APIの channel にて受付
+
+## 5. マッシュアップAPI
+
+ご協賛をいただいた各社のWebAPIを以下にご紹介します。<br>
+APIの情報提供、QA対応は Slack 上で行います。<br>
+Slack上に各API用のchannelが設けてありますので質問を投稿してください。<br>
+Slack: https://vehicleapi2017.slack.com/
 
 * エスディーテック社
     * ドライバーの心拍数、盛り上がり度
+    * [doc](./doc/sdtech_doc.pdf)
+    * 盛り上がり度はドライバーの精神的高揚度をあらわします<br>1～25 の値をとり、以下のように解釈されます
+        * 25: 落ち着いている
+        * 1: 非常に盛り上がっている 
+    * Slack: https://vehicleapi2017.slack.com/messages/sdtech_api/
 
 * JINS-meme
-    * 頭部の加速度（x,y,z）、頭部の回転（roll,pitch,yaw）
-まばたき(強さ、閉眼時間)、視線移動(上下左右を3段階)
+    * 頭部の加速度（x,y,z）、頭部の回転（roll,pitch,yaw）<br>
+まばたき(強さ、閉眼時間)、視線移動(上下左右を3段階)、視線位置(右、中央、左の3段階)<br>
 覚醒度(100点満点、連続値)、注意力(100点満点、連続値)
-視線位置(右、中央、左の3段階)
+    * JINS-meme の roll,pitch,yaw はvehicleAPIの車両データのroll,pitch,yawと単位が異なります
+        * 車両データ: 車体の回転角速度 degree/sec
+        * JINS-meme: 頭部の回転角度 degree
+    * JINS-memeの頭部の加速度（x,y,z）、頭部の回転（roll,pitch,yaw）という3軸情報は<br>
+    座標系が車両データと異なります。詳しくは 3.データ項目リスト 座標系についてを参照してください
+
+    * Slack: https://vehicleapi2017.slack.com/messages/jinsmeme_api/
 
 * 昭文社
     * MappleAPI（地図情報、観光情報）
+    * まっぷるAPI http://www.mapple.co.jp/biz/product/digital/accessmapple/full.html
+    * 詳細はチュートリアルで説明します
+    * Slack: https://vehicleapi2017.slack.com/messages/maple_api/
 
 * YuMake
     * 天気情報API（今日明日天気予報、週間天気予報、時系列天気予報、日の出日の入り、注意報警報、地震情報）
+    * 情報はSlackに掲載します
+    * Slack: https://vehicleapi2017.slack.com/messages/yumake_api/
 
 * IncrementP
     * インターネット地図配信サービス「Map Fan API」
+    * MAPFAN API https://www.mapfan.com/houjin/api/
+    * Slack: https://vehicleapi2017.slack.com/messages/mapfan_api/
 
 * KDDIウェブコミュニケーションズ
     * Twilio API
+    * 「Twilio」とは、たった数行のコードで電話やSMSとネットをつなぐことのできるクラウドAPIサービス
+    * クイックスタート: https://jp.twilio.com/docs/quickstart/client/javascript
+    * ガイド (サンプルコードなど): https://jp.twilio.com/docs/guides?filter-language=node.js
+    * APIリファレンス: https://jp.twilio.com/docs/api
+    * github: https://github.com/TwilioDevEd/client-quickstart-node
+    * Slack: https://vehicleapi2017.slack.com/messages/twillio_api/
 
-## 5. QAサポート
-
-* 開催日の質問にはチャットアプリSlackにより対応いたします。<br>
-  [slack](https://vehicleapi2017.slack.com/)
 
 ## 6. 注意事項
 
