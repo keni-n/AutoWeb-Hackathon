@@ -257,7 +257,7 @@ Slack: https://vehicleapi2017.slack.com/
 * IncrementP
     * インターネット地図配信サービス「Map Fan API」
     * Map Fan API https://www.mapfan.com/houjin/api/
-    * [doc](.doc/files/incrementP_doc.zip)
+    * [zip](doc/files/incrementP_doc.zip)
     * Slack: https://vehicleapi2017.slack.com/messages/mapfan_api/
 
 * KDDIウェブコミュニケーションズ
