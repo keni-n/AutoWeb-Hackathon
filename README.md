@@ -225,7 +225,7 @@ Slack: https://vehicleapi2017.slack.com/
 
 * エスディーテック社
     * ドライバーの心拍数、盛り上がり度
-    * [doc](./doc/sdtech_doc.pdf)
+    * [doc](./doc/files/sdtech_doc.pdf)
     * 盛り上がり度はドライバーの精神的高揚度をあらわします<br>1～25 の値をとり、以下のように解釈されます
         * 25: 落ち着いている
         * 1: 非常に盛り上がっている 
@@ -257,6 +257,7 @@ Slack: https://vehicleapi2017.slack.com/
 * IncrementP
     * インターネット地図配信サービス「Map Fan API」
     * MAPFAN API https://www.mapfan.com/houjin/api/
+    * [doc](.doc/files/incrementP_doc.zip)
     * Slack: https://vehicleapi2017.slack.com/messages/mapfan_api/
 
 * KDDIウェブコミュニケーションズ
