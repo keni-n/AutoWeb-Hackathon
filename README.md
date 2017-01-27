@@ -35,7 +35,8 @@ TOYOTA Priusでのテスト走行により走行データを収集しました<b
 <img src="./doc/images/hackathon_arch.png" width="800px">
 
 #### A. ハッカソンサーバー（クラウドサーバー）
-ハッカソンサーバーは走行データ（及び、その他センサー系データ）を格納し、Control-UIからのリクエストにより走行データ（及びセンサー系データ）を動画同期させて配信する。
+ハッカソンサーバーは走行データ（及び、その他センサー系データ）を格納し、Control-UIによる走行パターンのリクエストを受けて、動画の再生とタイミング同期した走行データ（及びセンサー系データ）の配信を行う。<br>
+Control-UI だけでなく、同じ RoomID を指定したクライアントアプリケーション（複数可）にも走行データが配信される。
 
 #### B. Control-UI
 ハッカソンサーバーを利用するためのUI。利用したい走行パターンを選択すると、走行動画と走行データが同期した状態で再生される。
@@ -59,9 +60,11 @@ http://13.112.91.95:3000/cluster/controlindex.html?json=20151221-nihonbashi-ginz
 注)RoomIDに'aaa'などの単純な文字列を使用すると、他の参加者のRoomIDと重複して動作が不正になる可能性があります<br>
 メールアドレスやその他ユニークさが保証される文字列を使用してください
 
-#### C. クライアントアプリケーション（ハッカソン参加者開発アプリ）例
+#### C. クライアントアプリケーション（ハッカソン参加者開発アプリ）
 ハッカソン参加者の皆様が開発するWebアプリケーションです。<br>ハッカソンSDKで利用可能となる W3C Vehicle APIを使用することで、自動車の走行情報（及び、走行中のセンサー系データ）を利用できます。<br>
 クライアントアプリケーションの作り方はApplicationSampleをご参照ください。<br>Control-UIとの連携動作に必要な最低限のコードで記述されています。<br>
+
+クライアントアプリケーション例<br>
 <img src="./doc/images/locationhtml.png" width="400px">
 
 ##### ApplicationSample
@@ -112,10 +115,10 @@ http://13.112.91.95:3000/MapTool/osm_mapping.html
 
 get()
 
-    navigator.vehicle.vehicleSpeed.get().then(`
-      `function (vehicleSpeed) {console.log("value:"+vehicleSpeed.speed);},`
-      `function (error) {console.log("There was an error");}`
-    );`
+    navigator.vehicle.vehicleSpeed.get().then( //ES6 promise 形式
+      function (vehicleSpeed) {console.log("value:"+vehicleSpeed.speed);},
+      function (error) {console.log("There was an error");}
+    );
 
 subscribe()/unsubscribe()
 
@@ -210,7 +213,7 @@ JINS MEME raw dataをアルゴリズム処理して算出した情報
 
 ## 4. QAサポート
 
-* 開催日の質問にはチャットアプリSlackにより対応いたします。<br>
+* 開催期間中の質疑はチャットアプリ Slack により対応いたします。<br>
     * Slack: https://vehicleapi2017.slack.com/<br>
     * 一般的な質問: [#general](https://vehicleapi2017.slack.com/messages/general/)
     * vehicleAPI、開発環境: [#vehicle_api](https://vehicleapi2017.slack.com/messages/vehicle_api/)
@@ -239,14 +242,14 @@ Slack: https://vehicleapi2017.slack.com/
         * 車両データ: 車体の回転角速度 degree/sec
         * JINS-meme: 頭部の回転角度 degree
     * JINS-memeの頭部の加速度（x,y,z）、頭部の回転（roll,pitch,yaw）という3軸情報は<br>
-    座標系が車両データと異なります。詳しくは 3.データ項目リスト 座標系についてを参照してください
+    座標系が車両データと異なります。<br>詳しくは [3.データ項目リスト 座標系について](#座標系について)を参照してください
 
     * Slack: https://vehicleapi2017.slack.com/messages/jinsmeme_api/
 
 * 昭文社
     * MappleAPI（地図情報、観光情報）
     * まっぷるAPI http://www.mapple.co.jp/biz/product/digital/accessmapple/full.html
-    * 詳細はチュートリアルで説明します
+    * 情報はSlackに掲載します
     * Slack: https://vehicleapi2017.slack.com/messages/maple_api/
 
 * YuMake
@@ -257,7 +260,7 @@ Slack: https://vehicleapi2017.slack.com/
 * IncrementP
     * インターネット地図配信サービス「Map Fan API」
     * Map Fan API https://www.mapfan.com/houjin/api/
-    * [zip](doc/files/incrementP_doc.zip)
+    * [doc](./doc/files/incrementP_doc.zip)
     * Slack: https://vehicleapi2017.slack.com/messages/mapfan_api/
 
 * KDDIウェブコミュニケーションズ
@@ -272,35 +275,51 @@ Slack: https://vehicleapi2017.slack.com/
 
 ## 6. 注意事項
 
-* 作業用ブラウザには Google Chrome をご使用ください。
-* ハッカソンサーバーは2系統用意してあります。一方の動作が不安定な場合は、もう一方を試してください。
-    * 1stサーバ:
-        * http://52.193.60.25:3000/cluster/controlindex.html?json=20151221-nihonbashi-ginza.json
-        * http://52.193.60.25:3000/MapTool/osm_mapping.html
-    * 2ndサーバ:
-        * http://13.112.91.95:3000/cluster/controlindex.html?json=20151221-nihonbashi-ginza.json
-        * http://13.112.91.95:3000/MapTool/osm_mapping.html
-* ハッカソンサーバー、Control-UIほかハッカソン開発環境は、期間中であれば会場外のインターネットからも利用可能です。
-
-* instantConsumptionの単位はg/sとなっており、0 ～ 2000g/secといった値を取ります。
+* 開発環境
+    * 開発用ツール、サンプルアプリケーションの動作確認は Google Chrome で行っております。
+    * ハッカソンサーバーは2系統用意してあります。一方の動作が不安定な場合は、もう一方を試してください。
+        * 1stサーバ:
+            * http://52.193.60.25:3000/cluster/controlindex.html?json=20151221-nihonbashi-ginza.json
+            * http://52.193.60.25:3000/MapTool/osm_mapping.html
+        * 2ndサーバ:
+            * http://13.112.91.95:3000/cluster/controlindex.html?json=20151221-nihonbashi-ginza.json
+            * http://13.112.91.95:3000/MapTool/osm_mapping.html
+    * ハッカソンサーバー、Control-UIほかハッカソン開発環境は、期間中であれば会場外のインターネットからも利用可能です。
+* 車両データ
+    * instantConsumptionの単位はg/sとなっており、0 ～ 2000g/secといった値を取ります。
 ただし、燃料噴射は瞬間的なもので1秒など連続するものではなく、2000g/secという値を取ったとしても、
 1秒で2kgの燃料を消費するわけではありません。
 
-* Altitudeの値は誤差が大きいため参考値となります。
+    * Altitudeの値は誤差が大きいため参考値となります。
 
-* VehiclePowerModeTypeとは、車両のイグニッションの状態を表します。
+    * VehiclePowerModeTypeとは、車両のイグニッションの状態を表します。
 今回の場合は'Running'以外の取得はできません。
 (Engien Crankingはイグニッションキーを回してセルモーターがエンジンを起動している状態です)
 
-* 走行パターンの中には、走行データ、センサーデータが、先頭部分、途中または末端が欠けているものがありますのでご注意ください。データの欠けはMapToolで確認することができます。
-  (動画より先に走行データの再生が終了するとControl-UIのメーターの動作が止まりますが、動画の再生はそのまま継続されます)
-    * 01.浅草寺雷門→言問橋
-    * 11.塩浜→東京タワー(Theta)
+* センサーデータ
+    * JINS-meme の roll,pitch,yaw はvehicleAPIの車両データのroll,pitch,yawと単位が異なります
+        * 車両データ: 車体の回転角速度 degree/sec
+        * JINS-meme: 頭部の回転角度 degree
+    * JINS-memeの頭部の加速度（x,y,z）、頭部の回転（roll,pitch,yaw）という3軸情報は<br>
+    座標系が車両データと異なります。<br>詳しくは [3.データ項目リスト 座標系について](#座標系について)を参照してください
+    * JINS-memeの頭部の回転（roll,pitch,yaw）のゼロ位置は端末によるキャリブレーションによります。<br>今回キャリブレーション値を記録していないため、MapToolのグラフ表示から適宜補正を加えてください。
+    * JINS-memeの頭部の回転のyaw値は、頭の動きと車体の動きの合算になります。(頭が動かなくても車体の向きが変わると、JINS-memeのyaw値は変化します)<br>頭部の回転だけを取り出すには、走行データの heading 値による補正が必要です。
+    * SDTech, JINS-meme のセンサーデータは 車両データと合わせて走行データjsonに記録されています
 
-* 以下については事情により走行中の動画の撮影ができなかったため、代替の動画が再生されます。
-    * 28.高津→等々力アリーナ（成人式）→246号→飯田橋
-    * 65.三角池→木戸池
-    * 66.前山ゲレンデ→蓮池
+* マッシュアップAPI
 
-* 3DカメラThetaの動画はControl-UI上のYoutubeウインドウでマウス操作により視点変更が可能です。ただし、確認した限りではUbuntu12.04上のGoogle ChromeではYoutubeの3D動画機能が正しく動作しませんでした。
+* 走行パターンデータ
+    * 走行パターンの中には、走行データ、センサーデータが、先頭部分、途中または末端で欠けているものがありますのでご注意ください。データの欠けはMapToolで確認することができます。
+    * 走行パターンにより、SDTech 生体データ、JINS-memデータの取得の有無があります。<br>詳細は[走行パターンリスト](#走行パターンリスト)を参照してください。<br>（または、Control-UI/MapTool のリストボックスのタイトルに V(=生体データ）、M(=JINS-memeデータ) の記号で表示しています）
+    * 走行データは Vehicle API によりリアルタイム的に配信を受ける以外に、走行データのjsonファイルをまるごとダウンロードしてjsonをパースして利用することも可能です。<br>詳しくは[走行データのダウンロード利用](#走行データのダウンロード利用)を参照してください
+    * 動画より先に走行データの再生が終了するとControl-UIのメーターの動作が止まりますが、動画の再生はそのまま継続されます
+        * 01.浅草寺雷門→言問橋
+        * 11.塩浜→東京タワー(Theta)
+
+    * 以下については走行中の動画の撮影ができなかったため、代替の動画が再生されます。
+        * 28.高津→等々力アリーナ（成人式）→246号→飯田橋
+        * 65.三角池→木戸池
+        * 66.前山ゲレンデ→蓮池
+
+    * 3DカメラThetaの動画はControl-UI上のYoutubeウインドウでマウス操作により視点変更が可能です（Google Chromeで確認）。ただし、古いバージョンの Google Chrome ではYoutubeの3Dカメラ機能が正しく動作しませんでした。
 
