@@ -252,9 +252,9 @@ Slack: https://vehicleapi2017.slack.com/
     * Slack: https://vehicleapi2017.slack.com/messages/jinsmeme_api/
 
 * 昭文社
-    * MappleAPI（地図情報、観光情報）
-    * まっぷるAPI http://www.mapple.co.jp/biz/product/digital/accessmapple/full.html
-    * 情報はSlackに掲載します
+    * MappleAPI 多言語マップAPI<br>複数の言語表記が可能な日本地図をインターネット経由で配信するAPI
+    * [leaflet](.doc/files/mapple_leaflet.pdf)
+    * HP: http://products.mappleapis.jp/home/touristmaps.html
     * Slack: https://vehicleapi2017.slack.com/messages/maple_api/
 
 * YuMake
