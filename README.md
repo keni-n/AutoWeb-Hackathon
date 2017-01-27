@@ -75,11 +75,16 @@ http://13.112.91.95:3000/cluster/controlindex.html?json=20151221-nihonbashi-ginz
     * ApplicationSample/location.html
 
 ##### 使用手順
-1. ApplicationSampleのコードをgithubから取得する<br>
+1. ApplicationSampleのソースをgithubから取得する<br>
 `$ git clone https://github.com/access-company/AutoWeb-Hackathon.git`
-2. vehicleAll.html 中のscriptタグでインクルードするJavaScriptファイルのサーバーIPを、Control-UIのIP に合わせて変更する
-3. vehicleAll.html 中のRoomID値をControl-UIに設定するRoomIDと合わせて変更する
-4. ApplicationSampleをChromeブラウザで起動して Control-UIからの走行データ配信を待つ
+2. サンプルソース（例：vehicleAll.html）中のscriptタグでインクルードするJavaScriptファイルのサーバーIPを、Control-UIのIP に合わせて変更する
+3. サンプルソース中のRoomID値をControl-UIに設定するRoomIDと合わせて変更する
+4. サンプルソースを HTTPサーバー(e.g. Apache, python SimpleHTTPServer, etc.)に配置する
+    * python SimpleHTTPServer の場合は下記を実行
+
+        `python -m SimpleHTTPServer`
+
+4. サンプルソースをChromeブラウザで起動して Control-UIからの走行データ配信を待つ
 5. 起動済のControl-UIで走行パターンを選択、再生ボタンを押下すると、vehicleall.html にも走行データが配信されアプリケーションが動作する
 
 #### D. MapTool
