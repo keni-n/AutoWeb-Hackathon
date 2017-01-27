@@ -253,7 +253,7 @@ Slack: https://vehicleapi2017.slack.com/
 
 * 昭文社
     * MappleAPI 多言語マップAPI<br>複数の言語表記が可能な日本地図をインターネット経由で配信するAPI
-    * [leaflet](.doc/files/mapple_leaflet.pdf)
+    * [leaflet](./doc/files/mapple_leaflet.pdf)
     * HP: http://products.mappleapis.jp/home/touristmaps.html
     * Slack: https://vehicleapi2017.slack.com/messages/maple_api/
 
