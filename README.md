@@ -202,8 +202,8 @@ JINS MEME raw dataをアルゴリズム処理して算出した情報
 | *interface* | *unit* | *備考* |
 |:----------|:------------|:------------|
 |Head-tilt|degree|頭の傾き<br>raw dataをアルゴリズム処理して算出  |
-|Awakeness|0-100|覚醒値。100-55:通常, 55-40:やや低い, 40-0:低い |
-|Attentiveness|0-100|注意力指数。100-60:通常, 60-40:やや低い, 40-0:低い |
+|Awakeness|0-100|覚醒値。100-60:覚醒している, 60-40:やや眠い, 40-0:結構眠い |
+|Attentiveness|0-100|注意力指数。100-60:注意できている, 60-30:注意力低下, 30-0:注意できていない |
 
 #### 座標系について
 車両データとJINS MEMEデータには、x/y/z加速度、ロール/ピッチ/ヨーという3軸データがありますが、車両とJINS MEMEでは座標系が異なりますのでご注意ください。
@@ -243,6 +243,7 @@ Slack: https://vehicleapi2017.slack.com/
     * 頭部の加速度（x,y,z）、頭部の回転（roll,pitch,yaw）<br>
 まばたき(強さ、閉眼時間)、視線移動(上下左右を3段階)、視線位置(右、中央、左の3段階)<br>
 覚醒度(100点満点、連続値)、注意力(100点満点、連続値)
+    * [doc](./doc/files/jinsmeme_doc.pdf)
     * JINS-meme の roll,pitch,yaw はvehicleAPIの車両データのroll,pitch,yawと単位が異なります
         * 車両データ: 車体の回転角速度 degree/sec
         * JINS-meme: 頭部の回転角度 degree
