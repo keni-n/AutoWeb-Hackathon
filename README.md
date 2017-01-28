@@ -143,7 +143,7 @@ https://github.com/access-company/AutoWeb-Hackathon.git
 
 |*interface*|*attribute*|*unit*|*備考*|
 |:----------|:----------|:------------|:------------|
-|VehicleSpeed|  speed|km/h|車両速度  |
+|VehicleSpeed|  speed|m/h|車両速度  |
 |EngineSpeed|   speed|rpm|エンジン回転数  |
 |VehiclePowerModeType| value|- |イグニッションの状態。offとrunningのみ取得可。<br>0:off, 1:running, 2:accessory, 3:accesory2, 4:engine-cranking|
 |AccelerationPedalPosition| value|%|  |
