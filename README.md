@@ -267,6 +267,7 @@ Slack: https://vehicleapi2017.slack.com/
     * インターネット地図配信サービス「Map Fan API」
     * Map Fan API https://www.mapfan.com/houjin/api/
     * [doc](./doc/files/incrementP_doc.zip)
+    * API使用のための認証ID:<br>8005840f3ba344382138fa018249d977716af2751f19ec23
     * Slack: https://vehicleapi2017.slack.com/messages/mapfan_api/
 
 * KDDIウェブコミュニケーションズ
