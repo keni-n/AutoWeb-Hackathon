@@ -256,7 +256,16 @@ Slack: https://vehicleapi2017.slack.com/
     * MappleAPI 多言語マップAPI<br>複数の言語表記が可能な日本地図をインターネット経由で配信するAPI
     * [leaflet](./doc/files/mapple_leaflet.pdf)
     * HP: http://products.mappleapis.jp/home/touristmaps.html
+    * 多言語マップAPI:
+    * => リファレンス: http://products.mappleapis.jp/api/mapplegl.html
+    * => デモページ: http://products.mappleapis.jp/api/mapplegl.sample.html
+    * => 試用アカウント: Mapple_QB6S5Hh22YRA
+    * プレイスサーチAPI:
+    * => リファレンス: http://products.mappleapis.jp/api/search_reference.html
+    * => デモページ: http://products.mappleapis.jp/sample/poi.html
+    * => 試用アカウント: Mapple_ge9Ov1OOh9FQ
     * Slack: https://vehicleapi2017.slack.com/messages/maple_api/
+
 
 * YuMake
     * 天気情報API（今日明日天気予報、週間天気予報、時系列天気予報、日の出日の入り、注意報警報、地震情報）
@@ -277,8 +286,8 @@ Slack: https://vehicleapi2017.slack.com/
     * ガイド (サンプルコードなど): https://jp.twilio.com/docs/guides?filter-language=node.js
     * APIリファレンス: https://jp.twilio.com/docs/api
     * github: https://github.com/TwilioDevEd/client-quickstart-node
+    * TwillioAPI無料トライアルurl: https://jp.twilio.com/login/kddi-web
     * Slack: https://vehicleapi2017.slack.com/messages/twillio_api/
-
 
 ## 6. 注意事項
 
