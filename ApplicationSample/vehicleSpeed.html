@@ -1,37 +1,76 @@
 <!DOCTYPE html>
-<html>
-    <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      
-      <!-- vehicle api 必須 : ここから-->
-      <script src="http://52.193.125.145:3000/socket.io/socket.io.js"></script> 
-      <script src="http://52.193.125.145:3000/www/js/vehicleAPI.js"></script>
-      <script src="http://52.193.125.145:3000/www/js/vehicleAPI-client.js"></script>
-      <script>
-        var roomID = "YOUR.NAME.HERE@example.com"; //ユニークな文字列に変更して下さい
-        
-        window.onload = function () {
-          document.getElementById("WSRoomID").innerHTML = roomID;
-          var msg = {"roomID":roomID, "data":"NOT REQUIRED"};
-          socket.emit('joinRoom', JSON.stringify(msg));        
-        }
-      </script>
-      <!-- vehicle api 必須 : ここまで -->
-      
-      <script>      
-        var vehicleSpeedSub = navigator.vehicle.vehicleSpeed.subscribe(function(vehicleSpeed) {
-          console.log("vehicle speed changed to: " + vehicleSpeed.speed);
-          document.getElementById("VehicleSpeed").innerHTML = Math.floor(vehicleSpeed.speed /1000);
-        });
-        
-      </script>
-    </head>
-    <body>
-      <div>
-        Room ID:<span id="WSRoomID"> </span>
-      </div>
-      <div>
-        VehicleSpeed:<span id="VehicleSpeed"> </span> [km/h]
-      </div>
-    </body>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title> VIAS test </title>
+<script src="js/vias_h2018.js"></script>
+<script src="js/svr_config.js"></script>
+</head>
+
+<body>
+<div>
+  Room ID:<span id="WSRoomID"> </span>
+</div>
+<div>
+  VehicleSpeed:<span id="VehicleSpeed"> </span> [km/h]
+</div>
+</body>
+
+<script>
+var VSS_SPEED    = 'Signal.Drivetrain.Transmission.Speed';
+
+//var VISS_IP = 'wwwivi';
+//var VISS_PORT='3000';
+const viscOption = {
+  'host': VISS_IP
+  ,'protocol': 'ws://'
+  ,'port': VISS_PORT
+  ,'roomId': undefined
+};
+
+var subId_speed = null;
+
+var vias = undefined;
+var bConnected = false;
+
+const connectCb = () => {
+  console.log(`Connect: Success`);
+  bConnected = true;
+};
+const connectErrCb = (_err) => {
+  console.log('Connect: Error :' + _err.number );
+  bConnected = false;
+};
+
+function doConnect() {
+  if (vias !== undefined || bConnected) {
+    return;
+  }
+  viscOption.roomId = document.getElementById('WSRoomID').innerHTML;
+  vias = new VISClient( viscOption );
+  vias.connect(connectCb, connectErrCb);
+}
+
+function doGetSpeed() {
+  // get method test
+  vias.get(VSS_SPEED,
+    function(_val) {
+      document.getElementById("VehicleSpeed").innerHTML = Math.floor(_val /1000);
+    },
+    function(_err) {
+      document.getElementById("VehicleSpeed").innerHTML = "error";
+    });
+}
+</script>
+
+<script>
+  var roomID = "0100"; //ユニークな文字列に変更して下さい（メールアドレス等）
+
+  window.onload = function () {
+    document.getElementById("WSRoomID").innerHTML = roomID;
+    doConnect();
+    setTimeout('doGetSpeed()',500)
+  }
+</script>
+
 </html>
