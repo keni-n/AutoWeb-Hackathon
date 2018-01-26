@@ -82,6 +82,7 @@ http://18.218.22.209:3000/cluster/controlindex.html?json=20180104-1542_okunikko-
 `$ git clone https://github.com/access-company/AutoWeb-Hackathon.git`
 
 ##### 2. サンプルソース（例：subscribeSpeed_callback.html）中のVISS_IPを、使用するサーバのIP（例：52.91.85.165）に変更する
+* PORTは 3001 に固定
 
 ##### 3. ROOMI_IDを Control-UIに設定した値に変更する。
 
@@ -89,10 +90,12 @@ http://18.218.22.209:3000/cluster/controlindex.html?json=20180104-1542_okunikko-
 （ハッカソン環境をホストするサーバーは、参加者のWebアプリケーション配置用に開放していませんので、各自でHTTPサーバーをご準備ください）<br>
 簡易なHTTPサーバーとして python の SimpleHTTPServer の場合は下記を実行
 
-    $python -m SimpleHTTPServer`
+    $ cd ApplicationSample
+    $ python -m SimpleHTTPServer
 
 ##### 5. サンプルソースをChromeブラウザで起動する。サーバーから走行データが配信されると画面に表示される。
-（例：http://127.0.0.1/subscribeSpeed_callback.html）
+（例：上記のpython の simpleHTTPServer を使った場合、defaultのポートが8000なので URLは以下<br>
+http://127.0.0.1:8000/subscribeSpeed_callback.html）
 
 ##### 6. ApplicationSample/viasTestAll.html サンプルを使用すると、ハッカソン環境で利用可能なデータ項目全ての配信を確認できる。
 　使用手順は上記の subscribeSpeed_callback.html と同じ。
