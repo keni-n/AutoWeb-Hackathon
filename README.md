@@ -105,11 +105,11 @@ http://127.0.0.1:8000/subscribeSpeed_callback.html）
 <img src="https://github.com/access-company/AutoWeb-Hackathon/raw/master/doc/images/maptool.png" width="500px">
 
 * 1stサーバ:
-http://52.91.85.165:3000/osm_mapping.html
+http://52.91.85.165:3000/MapTool/osm_mapping.html
 * 2ndサーバ:
-http://52.200.145.70:3000/osm_mapping.html
+http://52.200.145.70:3000/MapTool/osm_mapping.html
 * 3rdサーバ:
-http://18.218.22.209:3000/osm_mapping.html
+http://18.218.22.209:3000/MapTool/osm_mapping.html
 
 ##### 操作手順
 1. MapToolのURLをChromeブラウザで開く
