@@ -277,4 +277,9 @@ https://automotiveweb2018.slack.com/messages/C8SNY3JQ4/
 slackへのサインアップは下記からお願いします。
 https://join.slack.com/t/automotiveweb2018/shared_invite/enQtMjk5ODUyOTIxNjU1LWNlZWU0OTgxYzZmYjUxMWFjMjZjODQ1ZDdmOTI5ZmNhMjVmMmU4ZWNmN2VhMGEzODZkZDdmOTBjODM0ZWIyYTc
 
+## 8.その他情報
+
+### 車両の座標系について
+
+<img src="https://github.com/access-company/AutoWeb-Hackathon/raw/master/doc/images/vehicle_axis2.png" width="500px">
 
