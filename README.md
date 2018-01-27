@@ -236,7 +236,6 @@ DataPathの文字列は、サンプルアプリの一つ [viasTestAll.html](http
 
 
 
-
 ## 5.使用センサー
 
 * 気圧・気温・センサー
@@ -255,15 +254,27 @@ Bocco → iPhone →　ｍｙthings  → IFTTT → google spread sheet →変換
 BOCCOセンサーの紹介動画はこちらです。
 https://www.youtube.com/watch?v=k-e6gyyUr7k&feature=youtu.be
 
+*気圧センサー
+iPhoneの気圧センサーのデータです。
+
+*心拍数センサー
+AppleWatchの心拍数のデータを変換しています。
+
+
 ## 6.走行リスト
 走行パターンリスト
 * 利用可能な走行パターン（経路、発生イベント)については下記リストをご参照ください。<br>
  また各走行パターンのデータの詳細についてはマップツールでご確認ください。
     * 走行パターンリスト(2015.11～2016.1:センサー系データなし) [link](https://github.com/access-company/AutoWeb-Hackathon/blob/master/doc/files/course_list.pdf)
-    * 走行パターンリスト(2016.11～2017.1) [link](https://github.com/access-company/AutoWeb-Hackathon/blob/master/doc/files/course_list2017.pdf)
-    * 走行パターンリスト(2017.11～2017.1) [link](https://github.com/access-company/AutoWeb-Hackathon/blob/master/doc/files/course_list2018.xlsx)
+    * 走行パターンリスト(2016.11～2017.1:JINS MEMEのみあり) [link](https://github.com/access-company/AutoWeb-Hackathon/blob/master/doc/files/course_list2017.pdf)
+    * 走行パターンリスト(2017.11～2018.1:センサー系データあり) [link](https://automotiveweb2018.slack.com/files/U8SLD1J6P/F8ZH459C2/_________2018.xlsx)
 
+* 
 ## 7.マッシュアップAPI
 各協賛APIの詳細については、Slackの各社チャンネルでご確認ください。
 https://automotiveweb2018.slack.com/messages/C8SNY3JQ4/
+
+slackへのサインアップは下記からお願いします。
+https://join.slack.com/t/automotiveweb2018/shared_invite/enQtMjk5ODUyOTIxNjU1LWNlZWU0OTgxYzZmYjUxMWFjMjZjODQ1ZDdmOTI5ZmNhMjVmMmU4ZWNmN2VhMGEzODZkZDdmOTBjODM0ZWIyYTc
+
 
